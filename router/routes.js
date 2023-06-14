@@ -1,8 +1,7 @@
-const express =require("express");
-const router= express.Router();
-const destinationController=require("../controllers/destinationController");
-const authanticationController=require("../controllers/authanticationController");
-
+const express = require("express");
+const router = express.Router();
+const destinationController = require("../controllers/destinationController");
+const authanticationController = require("../controllers/authanticationController");
 
 // destinations
 router.route("/destinations")
@@ -15,10 +14,11 @@ router.route("/destinations/:destinationId")
     .put(destinationController.fullUpdateDestination)
     .patch(destinationController.partialUpdateDestination);
 
-
-
-
 //login
 router.route("/user/login")
-.post(authanticationController)
+.post(authanticationController.login)
+
+router.route("/user/register")
+.post(authanticationController.register)
+
 module.exports = router;

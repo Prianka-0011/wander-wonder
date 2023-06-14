@@ -1,44 +1,44 @@
-const mongoose= require("mongoose");
+const mongoose = require("mongoose");
 
-const airPortSchema=mongoose.Schema({
+const airPortSchema = mongoose.Schema({
     name: {
-        type:String,
-        required:true,
+        type: String,
+        required: true,
     },
     city: {
-        type:String,
-        required:true
+        type: String,
+        required: true
     }
-})
-const countrySchema=mongoose.Schema({
+});
+
+const countrySchema = mongoose.Schema({
     name: {
-        type:String,
-        required:true
+        type: String,
+        required: true
     },
     population: {
-        type:Number,
-        required:true
-    },
-    
-})
+        type: Number,
+        required: true
+    } 
+});
 
-const destinationSchema=mongoose.Schema({
+const destinationSchema = mongoose.Schema({
     name: {
-        type:String,
-        required:true  
+        type: String,
+        required: true  
     },
     description: {
-        type:String,
+        type: String,
        
     },
     expense: {
-        type:Number,
+        type: Number,
     },
     photo: {
-        type:String
+        type: String
     },
-    country:countrySchema,
-    airports:[airPortSchema]
+    country: countrySchema,
+    airports: [airPortSchema]
 })
 
-mongoose.model("Destination",destinationSchema,"destinations")
+mongoose.model("Destination", destinationSchema, "destinations");

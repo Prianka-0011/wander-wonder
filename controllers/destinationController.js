@@ -1,16 +1,12 @@
-
-const mongoose= require("mongoose");
+const mongoose = require("mongoose");
 require("dotenv").config();
 
-
-
-const DestinationModel=mongoose.model(process.env.MODEL_NAME);
-
+const DestinationModel = mongoose.model(process.env.DESTINATION_MODEL);
 
 let status = 200;
 let response = {
     message: null,
-     data: null
+    data: null
 }
 
 const _returnDestinations = function(res, destinations) {
@@ -20,23 +16,25 @@ const _returnDestinations = function(res, destinations) {
 }
 
 //getAll
-const getAll=function(req,res) {
-
+const getAll = function(req,res) {
     const offset = req.query.offset;
     const pageSize = req.query.pageSize;
-
-    DestinationModel.find().exec().then((desitatios) =>{
-
-        //response.data = desitatios;
-        status = 200;
-        response = desitatios.skip(offset).limit(pageSize);
-
-    }).catch(function(error){
-        status=500;
-        response.message="An error occurred while featching all the destination";
-    }).finally(res.status(status).json(response));
-    
+    DestinationModel.find()
+        .exec()
+        .then((destinations) => {
+            //response.data = destinations;
+            status = 200;
+            response = destinations.skip(offset).limit(pageSize);
+        })
+        .catch(function(error){
+            status = 500;
+            response.message = "An error occurred while featching all the destination";
+        })
+        .finally(() => {
+            res.status(status).json(response);
+        });
 }
+
 const save=function (req,res) {
     console.log("save method call"+req.body)
     
