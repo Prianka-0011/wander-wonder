@@ -1,0 +1,261 @@
+.hero .hero-image {
+  background-image: url("../../../assets/images/header.jpg");
+  background-size: cover;
+  height: 100vh; /* adjust the height as needed */
+  background-repeat: no-repeat;
+  background-position: center;
+  object-fit:contain;
+}
+.best-place{
+  height: auto;
+  margin-bottom: 5rem;
+  margin-top: -7rem;
+}
+.images-div{
+  height: 100%;
+  width: 100%;
+  padding: 0 3rem;
+}
+
+.bg-image {
+  height: auto;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 20px 30px #41383c;
+  display: flex;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.bg-image img{
+  height: 14rem;
+  width: 100%;
+  object-fit: cover;
+  /* position: absolute; */
+}
+.details {
+  position: absolute;
+  padding: 1rem;
+}
+.details .head-p {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  line-height: .7rem;
+}
+.details p {
+  font-size: .6rem;
+  font-weight:200;
+  color: #fff;
+}
+
+.details button {
+  background-color: rgb(185, 6, 6);
+  border: none;
+  color: #fff;
+  outline: none;
+  padding: 5px 10px;
+  font-size: 0.8rem;
+  border-radius: 5px;
+  margin-top: 1rem;
+}
+
+.bg-image:hover {
+  transform: scale(1.05);
+}
+.bg-image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.catelog-detail-overlay{
+   background-image: url(../../../assets/images/london.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  background-position: center;
+  object-fit:contain;
+  position: relative;
+
+}
+.catelog-detail-overlay::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.catelog-detail h1{
+color: #050505;
+font-weight: 500;
+text-align: center;
+font-size: 1.5rem;
+margin:4rem 0;
+color: #fff;
+}
+
+.images-list-div{
+  height: 100%;
+  width: 100%;
+  padding: 0 3rem;
+  margin-bottom: 5rem;
+
+}
+.desination-box {
+  height: auto;
+  width: 100%;
+  border-radius:.8rem;
+  background-color: #fff;
+  box-shadow: 0 20px 30px #41383c;
+
+}
+
+
+.img-box{
+  overflow: hidden;
+  position: relative;
+  border-radius: .8rem .8rem 0 0;
+}
+/* .img-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+} */
+.img-box img {
+  height: 12rem;
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.img-box img:hover{
+  transform: scale(1.2);
+}
+.destination-details{
+  text-align: left;
+  padding: 1rem;
+  height: 100%;
+}
+.destination-details p{
+  font-size: .6rem;
+  font-weight: 500;
+  line-height: .9rem;
+}
+.destination-details span{
+
+font-size: .9rem;
+font-weight: bold;
+}
+.description-detail {
+  border: none;
+  cursor: pointer;
+  outline: none;
+  font-size: .9rem;
+  background-color:rgb(185, 6, 6);;
+  padding: .5rem 1rem;
+  color: #fff;
+  width: 100%;
+  border-radius: 2rem;
+border-radius: 2;
+}
+.footer {
+height: 8rem;
+width: 100%;
+box-shadow: 0 20px 30px #41383c;
+}
+
+.country-wise-destination {
+  height: 45rem;
+  background-color: azure;
+  position: relative;
+}
+
+.country-destination-box{
+  display: flex;
+  height: 100%;
+  align-items: center
+}
+
+.country-destination-box h1{
+  font-weight: bold;
+}
+.country-destination-box button{
+  border: none;
+  cursor: pointer;
+  outline: none;
+  font-size: .9rem;
+  background-color:rgb(185, 6, 6);;
+  padding: .5rem 1rem;
+  color: #fff;
+  border-radius: 2rem;
+  border-radius: 2;
+}
+
+.destination-image {
+  position: relative;
+  flex: 0 0 50%;
+  height: 100%;
+}
+
+.destination-image-container {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  height: 100%;
+  padding-bottom: 30rem;
+  margin-top: 12rem;
+}
+
+.destination-image:nth-child(1) div {
+  position: absolute;
+  bottom: 8.5px;
+  right: 8.5px;
+  width: 14rem;
+  height: 14rem;
+}
+
+.destination-image:nth-child(2) div {
+  position: absolute;
+  bottom: 8.5px;
+  left: 8.5px;
+  width: 17rem;
+  height: 17rem;
+}
+
+.destination-image:nth-child(3) div {
+  position: absolute;
+  top: 8.5px;
+  right: 8.5px;
+  width: 12rem;
+  height: 12rem;
+}
+
+.destination-image:nth-child(4) div {
+  position: absolute;
+  top: 8.5px;
+  left: 8.5px;
+  width: 15rem;
+  height: 15rem;
+}
+
+.destination-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+

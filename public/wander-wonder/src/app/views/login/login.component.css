@@ -1,0 +1,51 @@
+.login-container {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  background-repeat: no-repeat;
+  justify-content: center;
+  background-size: cover;
+  background-image: url(../../../assets/images/grece.jpg);
+}
+.login-container::after {
+  content: "";
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.login-form {
+  max-width: 400px;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  z-index: 100px;
+}
+
+.login-form h2 {
+  text-align: center;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
