@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { DestinationService } from 'src/app/shared/services/destination-service';
+import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/shared/services/authentication.service';
+
 
 @Component({
   selector: 'app-header',
@@ -8,10 +10,24 @@ import { DestinationService } from 'src/app/shared/services/destination-service'
   styleUrls: ['./header.component.css']
 })
 
-export class HeaderComponent {
+export class HeaderComponent implements OnInit{
   countryName: string=""
-  constructor(private destinationService: DestinationService) {}
+  isLoginStatus!: boolean;
+  constructor(private authService: AuthenticationService,  private _router: Router) {}
 
+  ngOnInit(): void {
+    this.isLogIn()
+  }
+
+  isLogIn() {
+    this.isLoginStatus = this.authService.loggedInStatus;
+  }
+
+  logOut() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("isLoggedIn");
+    this._router.navigate(["login"]);
+  }
   onSubmit(searchForm: NgForm) {
     console.log(this.countryName)
     let query = "";
@@ -20,10 +36,10 @@ export class HeaderComponent {
     query+= "offset="+offset;
     query+= "&count="+count;
     query+= "&search="+this.countryName
-    this.destinationService.getAllByCountry(query).subscribe({
-      next:(destination) => {
-        console.log(destination);
-      }
-    })
+    // this.destinationService.getAllByCountry(query).subscribe({
+    //   next:(destination) => {
+    //     console.log(destination);
+    //   }
+    // })
   }
 }

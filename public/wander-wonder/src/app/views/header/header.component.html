@@ -16,11 +16,14 @@
     <button>
       About
     </button>
-    <button routerLink="login">
+    <button *ngIf="!isLoginStatus" routerLink="login">
       Log In
     </button>
-    <button routerLink="register">
+    <button *ngIf="!isLoginStatus" routerLink="register">
       Registar
+    </button>
+    <button  *ngIf="isLoginStatus" (click) = "logOut()">
+      Log Out
     </button>
   </div>
 </div>

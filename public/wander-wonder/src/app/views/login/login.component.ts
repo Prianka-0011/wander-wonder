@@ -21,6 +21,7 @@ export class LoginComponent {
           //console.log(response);
           if(response.data) {
             localStorage.setItem("token", response.data);
+            localStorage.setItem("isLoggedIn", "true");
             this._router.navigate(["profile"]);
           }
         },

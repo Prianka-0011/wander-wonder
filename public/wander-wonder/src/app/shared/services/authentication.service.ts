@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { AuthenticatiobResponse } from '../models/response';
 
 @Injectable({
@@ -10,7 +10,7 @@ import { AuthenticatiobResponse } from '../models/response';
 export class AuthenticationService {
 
   baseUrl="http://localhost:7272/api/"
-
+  loggedInStatus = true;
   header = { "Content-Type": "application/json" };
   constructor(private http:HttpClient) {
 
@@ -23,4 +23,15 @@ export class AuthenticationService {
   login(user:User):Observable<AuthenticatiobResponse>{
     return this.http.post<AuthenticatiobResponse>(this.baseUrl+"login",user, { headers: this.header })
   }
+
+  isLoggedIn(): Observable<boolean> {
+    const status = localStorage.getItem("isLoggedIn");
+    if (status && status === "true") {
+      this.loggedInStatus = true;
+    } else {
+      this.loggedInStatus = false;
+    }
+    return of(this.loggedInStatus);
+  }
+
 }
