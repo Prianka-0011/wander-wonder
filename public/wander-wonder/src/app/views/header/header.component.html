@@ -1,12 +1,15 @@
+
 <div class= "header">
   <p>Wander<span>Wonder</span></p>
   <div class="nav d-flex">
+
     <form #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm)">
       <input type="text" name="countryName" [(ngModel)]="countryName">
     <button class="search">
       search
     </button>
     </form>
+
     <button routerLink="">
       Home
     </button>
@@ -22,7 +25,7 @@
     <button *ngIf="!isLoginStatus" routerLink="register">
       Registar
     </button>
-    <button  *ngIf="isLoginStatus" (click) = "logOut()">
+    <button *ngIf="isLoginStatus" (click) = "logOut()">
       Log Out
     </button>
   </div>

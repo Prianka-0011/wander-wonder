@@ -1,16 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { AuthenticatiobResponse } from '../models/response';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-
+  isLoginStatus: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   baseUrl="http://localhost:7272/api/"
-  loggedInStatus = true;
+
   header = { "Content-Type": "application/json" };
   constructor(private http:HttpClient) {
 
@@ -27,11 +27,11 @@ export class AuthenticationService {
   isLoggedIn(): Observable<boolean> {
     const status = localStorage.getItem("isLoggedIn");
     if (status && status === "true") {
-      this.loggedInStatus = true;
+      this.isLoginStatus.next(true);
     } else {
-      this.loggedInStatus = false;
+      this.isLoginStatus.next(false);
     }
-    return of(this.loggedInStatus);
+    return (this.isLoginStatus);
   }
 
 }

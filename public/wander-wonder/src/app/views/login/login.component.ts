@@ -23,6 +23,7 @@ export class LoginComponent {
             localStorage.setItem("token", response.data);
             localStorage.setItem("isLoggedIn", "true");
             this._router.navigate(["profile"]);
+            this.authencationService.isLoggedIn();
           }
         },
         error:(err) => {
