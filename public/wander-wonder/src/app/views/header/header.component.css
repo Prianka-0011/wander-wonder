@@ -1,0 +1,61 @@
+.login-btn {
+  background-color: rgb(6, 179, 185);
+  border: none;
+  color: #fff;
+  outline: none;
+  padding: .3rem .8rem !important;
+  font-size: .8rem;
+  border-radius: 1rem;
+  text-decoration: none;
+}
+
+.header {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  height: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  z-index: 999;
+  backdrop-filter: blur(1rem);
+}
+
+.header p {
+  color: #15b1ee !important;
+  font-size: 1.4rem;
+  font-size: 300;
+}
+
+.header p span {
+  color: #eecd15;
+  font-size: 1.4rem;
+  font-size: 300;
+}
+
+.header button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #eecd15;
+  margin: 0 1rem;
+}
+
+.header input{
+border: thin dashed #eecd15;
+width: 20rem;
+border-radius: .6rem;
+backdrop-filter: blur(1rem);
+padding-left: .5rem;
+}
+.header input:focus {
+  outline: none;
+}
+.header .search {
+  background-color: #eecd15;
+  color: #fff;
+  padding: .2rem .4rem;
+  border-radius: .3rem;
+}

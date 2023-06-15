@@ -11,7 +11,7 @@ const userSchema = mongoose.Schema({
     password: {
         type: String,
         require:[true, "Password is required"],
-        minlength:[8,"Password must be at least 8 characters long "]
+        minlength:[4,"Password must be at least 4 characters long "]
     }
 })
-mongoose.model(process.env.USER_MODEL, userSchema, "users")
+mongoose.model(process.env.USER_MODEL, userSchema, process.env.USER_COLLECTION)

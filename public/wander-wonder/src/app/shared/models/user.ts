@@ -1,39 +1,39 @@
 export class User {
-  private _name!:string;
-  private _username!:string;
-  private _passworrd!:string;
+  private name!:string;
+  private username!:string;
+  private passworrd!:string;
 
-  get name()
+  get _name()
   {
-    return this._name
+    return this.name
   }
-  get username()
+  get _username()
   {
-    return this._username
+    return this.username
   }
-  get password()
+  get _password()
   {
-    return this._passworrd
+    return this.passworrd
   }
 
-  set name(name)
+  set _name(name)
   {
-     this._name = name
+     this.name = name
   }
-  set username(username)
+  set _username(username)
   {
-     this._username = username
+     this.username = username
   }
-  set password(password)
+  set _password(password)
   {
-     this._passworrd = this.password
+     this.passworrd = password
   }
 
   toJson():{}{
     return {
-      name:this.name,
-      password:this.password,
-      username:this.username
+      name:this._name,
+      password:this._password,
+      username:this._username
     }
 
   }

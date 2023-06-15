@@ -1,7 +1,7 @@
+<app-header></app-header>
 <header class="hero">
   <div class="hero-image"></div>
 </header>
-<pre>{{destination |json}}</pre>
 
 <div class="best-place">
   <div class="container ">
@@ -10,7 +10,7 @@
         <div class="col-md-4 col-12 col-lg-4 ">
           <div class="bg-image">
             <img src="../../../assets/images/grece1.jpg" alt="">
-            <div class="details">
+            <div *ngIf="destination" class="details">
               <p>{{destination[0].description}}</p>
               <p class="head-p">{{destination[0].name}}</p>
               <button>Details</button>
@@ -20,7 +20,7 @@
         <div class="col-md-4 col-12 col-lg-4 ">
           <div class="bg-image transform-y">
             <img src="../../../assets/images/grece1.jpg" alt="">
-            <div class="details">
+            <div *ngIf="destination" class="details">
               <p>{{destination[1].description}}</p>
               <p class="head-p">{{destination[1].name}}</p>
               <button>Details</button>
@@ -28,14 +28,13 @@
           </div>
         </div>
         <div class="col-md-4 col-12 col-lg-4">
-          <div class="bg-image">
+          <div *ngIf="destination" class="bg-image">
             <img src="../../../assets/images/london.jpg" alt="">
             <div class="details">
               <p>{{destination[2].description}}</p>
               <p class="head-p">{{destination[2].name}}</p>
               <button>Details</button>
             </div>
-
           </div>
         </div>
 
@@ -53,7 +52,7 @@
             <p>Top destinations from</p>
             <h1>Bangladesh</h1>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.c</p>
-            <button>Explore</button>
+            <!-- <button>Explore</button> -->
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
-
+const jwt = require("jsonwebtoken");
 const DestinationModel = mongoose.model(process.env.DESTINATION_MODEL);
 
 let status = 200;
@@ -9,135 +9,312 @@ let response = {
     data: null
 }
 
-const _returnDestinations = function(res, destinations) {
-    return new Promise((resolve, reject) => {
-        resolv 
+const getAll = function(req,res) {
+    let query = {};
+    console.log(req.query);
+    let offset = 0;
+    let count = 5;
+   
+    if(req.query.offset) {
+        offset = parseInt(req.query.offset)
+    }
+    if(req.query.count) {
+        count = parseInt(req.query.count);
+    }
+    if (req.query.search) {
+        query = {"name": { $regex: new RegExp(req.query.search, "i") } };
+    }
+    const _tokenValidation = function(token) {
+        
+    }
+    const _foundDestination = function(destinations) {
+        return new Promise((resolve, reject) => {
+            if(destinations) {
+                resolve({
+                    status: 200,
+                    message: `Total ${destinations.length} found`,
+                    data: destinations 
+                });
+            } else {
+                reject({
+                    status: 404,
+                    message: "Destination not found",
+                    data: null 
+                });
+            }
+        });
+    }
+    
+    const _setResponse = function(isValidDestination) {
+        status = isValidDestination.status;
+        response.message = isValidDestination.message;
+        response.data = isValidDestination.data
+    }
+    
+    const _setError = function(error) {
+        status = 500;
+        response.message = error;
+        response.data = null
+    }
+    
+    DestinationModel.find(query)
+    .skip(offset)
+    .limit(count)
+    .exec()
+    .then((isFounDestination) => _foundDestination(isFounDestination))
+    .then((destination) => _setResponse(destination))
+    .catch((error) =>_setError(error))
+    .finally(() => {
+        res.status(status).json(response);
     });
 }
 
-//getAll
-const getAll = function(req,res) {
-    const offset = req.query.offset;
-    const pageSize = req.query.pageSize;
-    DestinationModel.find()
-        .exec()
-        .then((destinations) => {
-            //response.data = destinations;
-            status = 200;
-            response = destinations.skip(offset).limit(pageSize);
-        })
-        .catch(function(error){
-            status = 500;
-            response.message = "An error occurred while featching all the destination";
-        })
-        .finally(() => {
-            res.status(status).json(response);
-        });
-}
-
-const save=function (req,res) {
-    console.log("save method call"+req.body)
+const countryWiseGetAll = function(req,res) {
+    console.log("Country wisedesitana")
+    let query = {};
+    console.log(req.query);
+    let offset = 0;
+    let count = 5;
+   
+    if(req.query.offset) {
+        offset = parseInt(req.query.offset)
+    }
+    if(req.query.count) {
+        count = parseInt(req.query.count);
+    }
+    if (req.query.search) {
+        query = { "country.name": { $regex: new RegExp(req.query.search, "i") } };
+    }
     
-    DestinationModel.create(req.body)
-    .then(function (result) {
-        response.message = "Destination saved successfully!";
-        response.data = result;
+    offset = parseInt(req.query.offset);
+    count = parseInt(req.query.count);
+    
+    const _foundDestination = function(destinations) {
+        return new Promise((resolve, reject) => {
+            if(destinations) {
+                resolve({
+                    status: 200,
+                    message: `Total ${destinations.length} found`,
+                    data: destinations 
+                });
+            } else {
+                reject({
+                    status: 404,
+                    message: "Destination not found",
+                    data: null 
+                });
+            }
+        });
+    }
+    
+    const _setResponse = function(isValidDestination) {
+        console.log("destination from response :",isValidDestination)
+        status = isValidDestination.status;
+        response.message = isValidDestination.message;
+        response.data = isValidDestination.data
+    }
+    
+    const _setError = function(error) {
+        status = 500;
+        response.message = error;
+        response.data = null
+    }
+    
+    DestinationModel.find(query)
+    .skip(offset)
+    .limit(count)
+    .exec()
+    .then((isFounDestination) => _foundDestination(isFounDestination))
+    .then((destination) => _setResponse(destination))
+    .catch((error) =>_setError(error))
+    .finally(() => {
         res.status(status).json(response);
-    }).catch(function(error){
-        status=500;
-        response.message="An error occurred while saving the destination";
-        data=null
+    });
+}
+const save=function (req,res) {
+    
+    const _setResponse = function(destinations) {
+        status = 200;
+        response.message = `Destination save successfully!`;
+        response.data = destinations
+    }
+    
+    const _setError = function(error) {
+        status = 500;
+        response.message = error;
+        response.data = null
+    }
+
+    DestinationModel.create(req.body)
+    .then((destination) => _setResponse(destination))
+    .catch((error) => _setError(error))
+    .finally(() => {
         res.status(status).json(response);
     })
     
     
 }
+
 const getOne=function(req ,res){
+    const _foundDestination = function(destination) {
+        return new Promise((resolve, reject) => {
+            if(destination) {
+                resolve({
+                    status: 200,
+                     message: "Destination found",
+                    data: destination 
+                });
+            } else {
+                reject({
+                    status: 404,
+                    message: "Destination not found",
+                    data: null 
+                });
+            }
+        });
+    }
+    const _setResponse = function(isValidDestination) {
+        status = isValidDestination.status;
+        response.message = isValidDestination.message;
+        response.data = isValidDestination.data
+    }
     
+    const _setError = function(error) {
+        status = 500;
+        response.message = error;
+        response.data = null
+    }
     const destinationId=req.params.destinationId;
     console.log(destinationId);
-    DestinationModel.findById(destinationId).exec().then(function(destination) {
-        if(!destination) {
-            status=404;
-            response= destination;
-            res.status(status).json(response)
-        } else {
-            status= 200;
-            response.data= destination;          
-        }
-        res.status(status).json(response);
-    }).catch(function(error){
-        status = 500;
-        response.message="An error occurred while featching the destination";
-        res.status(status).json(response);
+    DestinationModel.findById(destinationId)
+    .exec()
+    .then((destination) => _foundDestination(destination))
+    .then((isValidDestination) => _setResponse(isValidDestination))
+    .catch((error) => _setError(error))
+    .finally(() => {
+        res.status(status).json(response)
     })
     
 }
 
 const fullUpdateDestination = function(req, res) {
-    const destinationId = req.params.destinationId;
-    console.log("Update call: " + destinationId, req.body);
-  
-    DestinationModel.findOneAndReplace({ _id: destinationId }, req.body, { new: true } )
-      .then(function(updatedDestination) {
-        if (updatedDestination) {
-            status = 200;
-          const response = {
-            message: "Destination update successful!",
-            data: updatedDestination
-          };
-          res.status(status).json(response);
-        } else {
-            status = 404;
-          const response = {
-            message: "Destination not found.",
-            data: null
-          };
-          res.status(status).json(response);
-        }
-      })
-      .catch(function(error) {
+    const _foundDestination = function(destination) {
+        return new Promise((resolve, reject) => {
+            if(destination) {
+                resolve({
+                    status: 200,
+                    messag: "full Update successfully",
+                    data: destination 
+                });
+            } else {
+                reject({
+                    status: 404,
+                    message: "Destination not found",
+                    data: null 
+                });
+            }
+        });
+    }
+    const _setResponse = function(isValidDestination) {
+        status = isValidDestination.status;
+        response.message = isValidDestination.message;
+        response.data = isValidDestination.data
+    }
+    
+    const _setError = function(error) {
         status = 500;
-        const response = {
-          message: "An error occurred while updating data!",
-          data: error
-        };
+        response.message = error;
+        response.data = null
+    }
+    const destinationId = req.params.destinationId;
+    DestinationModel.findOneAndReplace({ _id: destinationId }, req.body, { new: true } )
+    .then((destination) => _foundDestination(destination))
+    .then((isValidDestination) => _setResponse(isValidDestination))
+    .catch((error) => _setError(error))
+    .finally(() => {
         res.status(status).json(response);
-      });
-  };
-  
+    })
+};
+
 const partialUpdateDestination = function(req ,res) {
     const destinationId = req.params.destinationId;
-    DestinationModel.findByIdAndUpdate(destinationId,req.body,{new:true}).exec().then( function(updateDesitanation){
-        if (updatedDestination) {
-            response.message = " Destination Partially update successful!";
-            response.data = updatedDestination;
-            status = 200;
-        } else if(!updatedDestination){
-            status = 404;
-            response.message = "Destination not found.";
-            response.data =null;
-            
-        }
-        res.status(status).json(response);
-    }).catch(function(error) {
-        status= 500;
-        response.message= "An error occured while updating data !"
+
+    const _foundDestination = function(destination) {
+        return new Promise((resolve, reject) => {
+            if(destination) {
+                resolve({
+                    status: 200,
+                    
+                message: "full Update successfully",
+                    data: destination 
+                });
+            } else {
+                reject({
+                    status: 404,
+                        message: "Destination not found",
+                    data: null 
+                });
+            }
+        });
+    }
+    const _setResponse = function(isValidDestination) {
+        status = isValidDestination.status;
+        response.message = isValidDestination.message;
+        response.data = isValidDestination.data
+    }
+    
+    const _setError = function(error) {
+        status = 500;
+        response.message = error;
+        response.data = null
+    }
+    DestinationModel.findByIdAndUpdate(destinationId,req.body,{new:true})
+    .exec() 
+    .then((destination) => _foundDestination(destination))
+    .then((isValidDestination) => _setResponse(isValidDestination))
+    .catch((error) => _setError(error))
+    .finally(() => {
         res.status(status).json(response);
     })
     
 }
 const deleteDestination = function(req, res) {
     const destinationId = req.params.destinationId;
-    DestinationModel.findByIdAndDelete(destinationId).exec().then(function(deleteDestination) {
-        status = 200;
-        response.message = "Delete successfully !"
-        response.data = result; 
-        res.status(status).json(response);
-    }).catch(function(error){
-        status=500;
-        response.message="An error occurred while deleting the destination";
-        res.status(status).json(response);
+    const _foundDestination = function(destination) {
+        return new Promise((resolve, reject) => {
+            if(destination) {
+                resolve({
+                    status: 200,
+                    message: "delete successfully",
+                    data: destination 
+                });
+            } else {
+                reject({
+                    status: 404,
+                    message: "Destination not found",
+                    data: null 
+                });
+            }
+        });
+    }
+    const _setResponse = function(isValidDestination) {
+        status = isValidDestination.status;
+        response.message = isValidDestination.message;
+        response.data = isValidDestination.data
+    }
+    
+    const _setError = function(error) {
+        status = 500;
+        response.message = error;
+        response.data = null
+    }
+    DestinationModel.findByIdAndDelete(destinationId)
+    .exec()
+    .then((foundDestination) => _foundDestination(foundDestination))
+    .then((user) => _setResponse(user))
+    .catch((error) => _setError(error))
+    .finally(() => {
+        res.status(status).json(response)
     })
 }
 module.exports={
@@ -146,6 +323,7 @@ module.exports={
     getOne,
     deleteDestination,
     fullUpdateDestination,
-    partialUpdateDestination
+    partialUpdateDestination,
+    countryWiseGetAll
 }
 

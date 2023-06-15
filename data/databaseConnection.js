@@ -18,12 +18,12 @@ mongoose.connection.on("error",function() {
     console.log("Mongoose connection error "+error);
 });
 
-process.on("SIGINT",function() {
-    processIntrupt(function() {
-        console.log(process.env.SIGINT_MESSAGE);
-        process.exit(0);
-    })
-});
+// process.on("SIGINT",function() {
+//     processIntrupt(function() {
+//         console.log(process.env.SIGINT_MESSAGE);
+//         process.exit(0);
+//     })
+// });
 
 
 

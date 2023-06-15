@@ -3,6 +3,7 @@ import { Observable } from "rxjs";
 import { Destination } from "../models/destination-model";
 
 import { Injectable } from '@angular/core';
+import { DestinationList } from "../models/response";
 
 @Injectable()
 export class DestinationService {
@@ -10,8 +11,14 @@ export class DestinationService {
   constructor(private http:HttpClient) {
 
   }
-  getAll():Observable<Destination[]>
+  getAll(query: string):Observable<DestinationList>
   {
-    return this.http.get<Destination[]>(`${this.baseUrl}/destinations`);
+    console.log(query)
+    return this.http.get<DestinationList>(`${this.baseUrl}destinations?`+query);
+  }
+  getAllByCountry(query: string):Observable<DestinationList>
+  {
+    console.log(query)
+    return this.http.get<DestinationList>(`${this.baseUrl}country/destinations?`+query);
   }
 }

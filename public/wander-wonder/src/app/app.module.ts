@@ -9,8 +9,10 @@ import { DestinationListComponent } from './views/destination-list/destination-l
 import { DestinationService } from './shared/services/destination-service';
 import {  HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './views/login/login.component';
-import { UserServiceService } from './shared/services/user-service.service';
 import { RegisterComponent } from './views/register/register.component';
+import { AuthenticationService } from './shared/services/authentication.service';
+import { UserprofileComponent } from './views/userprofile/userprofile.component';
+import { HeaderComponent } from './views/header/header.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { RegisterComponent } from './views/register/register.component';
     HomeComponent,
     DestinationListComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserprofileComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,7 @@ import { RegisterComponent } from './views/register/register.component';
   ],
   providers: [
     DestinationService,
-    UserServiceService
+    AuthenticationService
   ],
   bootstrap: [AppComponent]
 })

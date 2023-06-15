@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
-const { use } = require("../router/routes");
 require("dotenv").config();
+const promisify = require("util").promisify
+const jwt = require("jsonwebtoken");
 const User = mongoose.model(process.env.USER_MODEL);
 
 let status = 200;
@@ -16,12 +17,12 @@ const login = function(req, res) {
                 resolve({
                     status: 200,
                     message: "Login successfully!",
-                    data: true
+                    data: reqUser
                 });
                 reject({
                     status: 404,
                     message: "Invalid crediential!",
-                    data: false
+                    data: null
                 });
             }
         })
@@ -39,7 +40,29 @@ const login = function(req, res) {
             }
         });
     }
-    
+    const signAsync = promisify(jwt.sign);
+    const _generateToken = function(user) {
+        return new Promise((resolve, reject) => {
+            const tokenPayload = { userId: user._id };
+            const signOptions = {expiresIn: "1h",};
+            signAsync(tokenPayload, "CS572", signOptions)
+              .then((token) => {
+                resolve({
+                  status: 200,
+                  message: "Login successfully!",
+                  data: token,
+                });
+              })
+              .catch((error) => {
+                reject({
+                  status: 404,
+                  message: "Invalid Token!",
+                  data: null,
+                });
+              });
+          });
+        }
+
     const _setResponse = function(responseData) {
         status = responseData.status;
         response.message = responseData.message;
@@ -58,14 +81,16 @@ const login = function(req, res) {
     .exec()
     .then((user) => _isValidUser(user))
     .then((user) => _comparePassword(user, reqUser))
-    .then((res) => _setResponse(res))
+    .then((user) => _generateToken(user))
+    .then((token) => _setResponse(token))
     .catch((error) => _setError(error))
     .finally(() => {
         res.status(status).json(response);
-    });
+    })
 }
 
 const register = function(req, res) {
+    console.log("calling register", req.body)
     const _setResponse = function(responseData) {
         status = 200;
         response.message = "User Register Successfully!";

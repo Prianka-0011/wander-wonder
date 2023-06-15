@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+require("dotenv").config();
 const airPortSchema = mongoose.Schema({
     name: {
         type: String,
@@ -41,4 +41,4 @@ const destinationSchema = mongoose.Schema({
     airports: [airPortSchema]
 })
 
-mongoose.model("Destination", destinationSchema, "destinations");
+mongoose.model(process.env.DESTINATION_MODEL, destinationSchema, process.env.DESTINATION_COLLECTION);

@@ -1,12 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const destinationController = require("../controllers/destinationController");
-const authanticationController = require("../controllers/authanticationController");
+const authanticationController = require("../controllers/userController");
 
 // destinations
 router.route("/destinations")
     .get(destinationController.getAll)
     .post(destinationController.save);
+
+router.route("/country/destinations")
+    .get(destinationController.countryWiseGetAll)
 
 router.route("/destinations/:destinationId")
     .get(destinationController.getOne)
@@ -15,10 +18,10 @@ router.route("/destinations/:destinationId")
     .patch(destinationController.partialUpdateDestination);
 
 //login
-router.route("/user/login")
+router.route("/login")
 .post(authanticationController.login)
 
-router.route("/user/register")
+router.route("/register")
 .post(authanticationController.register)
 
 module.exports = router;

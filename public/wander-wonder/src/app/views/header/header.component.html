@@ -1,0 +1,26 @@
+<div class= "header">
+  <p>Wander<span>Wonder</span></p>
+  <div class="nav d-flex">
+    <form #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm)">
+      <input type="text" name="countryName" [(ngModel)]="countryName">
+    <button class="search">
+      search
+    </button>
+    </form>
+    <button routerLink="">
+      Home
+    </button>
+    <button routerLink="destinations">
+      Destinations
+    </button>
+    <button>
+      About
+    </button>
+    <button routerLink="login">
+      Log In
+    </button>
+    <button routerLink="register">
+      Registar
+    </button>
+  </div>
+</div>

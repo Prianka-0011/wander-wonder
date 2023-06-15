@@ -6,9 +6,10 @@
   background-repeat: no-repeat;
   justify-content: center;
   background-size: cover;
-  background-image: url(../../../assets/images/grece.jpg);
+  z-index: 1;
+  background-image: url(../../../assets/images/loginbg.jpg);
 }
-.login-container::after {
+.login-container::before {
   content: "";
   top: 0;
   bottom: 0;
@@ -16,14 +17,22 @@
   right: 0;
   position: absolute;
   background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
 }
+.login-form label {
+  color: #eecd15;
+}
+.error{
+  color: #da1111;
+}
+
 .login-form {
   max-width: 400px;
-  padding: 20px;
-  background-color: #f2f2f2;
+  padding: 50px;
+  backdrop-filter: blur(1rem);
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  z-index: 100px;
+  z-index: 3;
 }
 
 .login-form h2 {
@@ -33,17 +42,30 @@
 .login-form input[type="text"],
 .login-form input[type="password"] {
   width: 100%;
-  padding: 10px;
+  padding: 4px;
+  border: none;
   margin-bottom: 10px;
-  border: 1px solid #ccc;
+  border-radius: .5rem;
   border-radius: 3px;
+}
+
+.login-form input[type="text"]:focus {
+  border: none;
+  outline: none;
+}
+
+
+.login-form input[type="password"]:focus {
+  border: none;
+  outline: none;
 }
 
 .login-form button {
   width: 100%;
-  padding: 10px;
-  background-color: #4CAF50;
+  padding: 5px;
+  background-color: rgb(6, 179, 185);
   border: none;
+  border-radius: 5rem;
   color: #fff;
   font-size: 16px;
   font-weight: bold;
