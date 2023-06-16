@@ -4,16 +4,16 @@
 </header>
 
 <div class="best-place">
-  <div class="container ">
+  <div class="container">
     <div class="images-div">
       <div class="row ">
         <div class="col-md-4 col-12 col-lg-4 ">
           <div class="bg-image">
             <img src="../../../assets/images/grece1.jpg" alt="">
             <div *ngIf="destination" class="details">
-              <p>{{destination[0].description}}</p>
+              <p class="mb-4">{{destination[0].description.slice(0, 70)}}...</p>
               <p class="head-p">{{destination[0].name}}</p>
-              <button>Details</button>
+              <button class="mt-4">Details</button>
             </div>
           </div>
         </div>
@@ -21,9 +21,9 @@
           <div class="bg-image transform-y">
             <img src="../../../assets/images/grece1.jpg" alt="">
             <div *ngIf="destination" class="details">
-              <p>{{destination[1].description}}</p>
+              <p class="mb-4">{{destination[1].description.slice(0, 70)}}...</p>
               <p class="head-p">{{destination[1].name}}</p>
-              <button>Details</button>
+              <button class="mt-4">Details</button>
             </div>
           </div>
         </div>
@@ -31,9 +31,9 @@
           <div *ngIf="destination" class="bg-image">
             <img src="../../../assets/images/london.jpg" alt="">
             <div class="details">
-              <p>{{destination[2].description}}</p>
+              <p class="mb-4">{{destination[2].description.slice(0, 70)}}...</p>
               <p class="head-p">{{destination[2].name}}</p>
-              <button>Details</button>
+              <button class="mt-4">Details</button>
             </div>
           </div>
         </div>
@@ -99,11 +99,11 @@
               </div>
 
               <div class="destination-details">
-                <p class="destination-name"><span>Name : </span>Tower of London</p>
-                <p class="country"><span>country : </span>London</p>
-                <p class="Population"><span>Population : </span>599</p>
+                <p class="destination-name">Tower of London</p>
+                <p class="country"><span>Country: </span>United Kingdom</p>
+                <p class="Population"><span>Population: </span>599</p>
                 <p class="description">In publishing and graphic design, Lorem ipsum is a</p>
-                <button class="description-detail">details</button>
+                <button class="description-detail-button mt-4">Explore</button>
               </div>
             </div>
           </div>
@@ -114,11 +114,11 @@
               </div>
 
               <div class="destination-details">
-                <p class="destination-name"><span>Name : </span>Tower of London</p>
-                <p class="country"><span>country : </span>London</p>
-                <p class="Population"><span>Population : </span>599</p>
+                <p class="destination-name">Tower of London</p>
+                <p class="country"><span>Country: </span>United Kingdom</p>
+                <p class="Population"><span>Population: </span>599</p>
                 <p class="description">In publishing and graphic design, Lorem ipsum is a</p>
-                <button class="description-detail">details</button>
+                <button class="description-detail-button mt-4">Explore</button>
               </div>
             </div>
           </div>
@@ -128,11 +128,11 @@
                 <img src="../../../assets/images/listimg3.jpg" alt="">
               </div>
               <div class="destination-details">
-                <p class="destination-name"><span>Name : </span>Tower of London</p>
-                <p class="country"><span>country : </span>London</p>
-                <p class="Population"><span>Population : </span>599</p>
+                <p class="destination-name">Tower of London</p>
+                <p class="country"><span>Country: </span>United Kingdom</p>
+                <p class="Population"><span>Population: </span>599</p>
                 <p class="description">In publishing and graphic design, Lorem ipsum is a</p>
-                <button class="description-detail">details..</button>
+                <button class="description-detail-button mt-4">Explore</button>
               </div>
             </div>
           </div>

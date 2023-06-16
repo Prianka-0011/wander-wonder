@@ -1,19 +1,8 @@
-.login-btn {
-  background-color: rgb(6, 179, 185);
-  border: none;
-  color: #fff;
-  outline: none;
-  padding: .3rem .8rem !important;
-  font-size: .8rem;
-  border-radius: 1rem;
-  text-decoration: none;
-}
-
 .header {
   width: 100%;
   position: fixed;
   left: 0;
-  height: 4rem;
+  height: 5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -27,6 +16,7 @@
   color: #15b1ee !important;
   font-size: 1.4rem;
   font-size: 300;
+  cursor: pointer;
 }
 
 .header p span {
@@ -35,7 +25,7 @@
   font-size: 300;
 }
 
-.header button {
+.header .nav button {
   background-color: transparent;
   border: none;
   outline: none;
@@ -43,19 +33,33 @@
   margin: 0 1rem;
 }
 
-.header input{
-border: thin dashed #eecd15;
-width: 20rem;
-border-radius: .6rem;
-backdrop-filter: blur(1rem);
-padding-left: .5rem;
+.header input {
+  width: 25vw;
+  border-radius: 2rem;
+  padding-left: .5rem;
 }
+
 .header input:focus {
   outline: none;
 }
+
+.header button {
+  font-size: 0.96rem;
+}
+
 .header .search {
-  background-color: #eecd15;
+  border-radius: 2rem;
+  /* padding-left: 3rem; */
+  margin-left: -2rem;
+}
+
+.login-btn {
+  background-color: rgb(6, 179, 185) !important;
+  border: none;
   color: #fff;
-  padding: .2rem .4rem;
-  border-radius: .3rem;
+  outline: none;
+  padding: .3rem .8rem !important;
+  font-size: .8rem;
+  border-radius: 1rem;
+  text-decoration: none;
 }

@@ -1,32 +1,36 @@
-
 <div class= "header">
-  <p>Wander<span>Wonder</span></p>
-  <div class="nav d-flex">
 
-    <form #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm)">
-      <input type="text" name="countryName" [(ngModel)]="countryName">
-    <button class="search">
-      search
-    </button>
-    </form>
+  <p routerLink="/" class="p-0 m-0">Wander<span>Wonder</span></p>
 
-    <button routerLink="">
-      Home
+  <form #searchForm="ngForm" class="d-flex" (ngSubmit)="onSubmit(searchForm)">
+    <input type="text" class="form-control" name="countryName" [(ngModel)]="countryName">
+    <button class="search btn btn-warning me-3 pe-3 ps-3">
+      Search
     </button>
-    <button routerLink="destinations">
-      Destinations
-    </button>
-    <button>
-      About
-    </button>
-    <button *ngIf="!isLoginStatus" routerLink="login">
-      Log In
-    </button>
-    <button *ngIf="!isLoginStatus" routerLink="register">
-      Registar
-    </button>
-    <button *ngIf="isLoginStatus" (click) = "logOut()">
-      Log Out
-    </button>
+  </form>
+
+  <div class="d-flex">
+    
+    <div class="nav">
+      <button routerLink="/">
+        Home
+      </button>
+      <button routerLink="destinations">
+        Destinations
+      </button>
+      <button>
+        About
+      </button>
+      <button *ngIf="!isLoginStatus" routerLink="login">
+        Log In
+      </button>
+      <button *ngIf="!isLoginStatus" routerLink="register">
+        Register
+      </button>
+      <button *ngIf="isLoginStatus" (click) = "logOut()">
+        Log Out
+      </button>
+    </div>
+
   </div>
 </div>
