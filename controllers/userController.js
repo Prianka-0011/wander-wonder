@@ -1,10 +1,11 @@
 const mongoose = require("mongoose");
+const bcrypt = require('bcrypt');
 require("dotenv").config();
 const promisify = require("util").promisify
 const jwt = require("jsonwebtoken");
 const User = mongoose.model(process.env.USER_MODEL);
 
-let status = 200;
+let status = process.env.RESPONSE_STATUS_OK;
 let response = {
     data: null,
     message: null
@@ -13,14 +14,10 @@ let response = {
 const login = function(req, res) {
     const _comparePassword = function(user, reqUser) {
         return new Promise((resolve, reject)=> {
-            if(user.password === reqUser.password) {
-                resolve({
-                    status: 200,
-                    message: "Login successfully!",
-                    data: reqUser
-                });
+            if(bcrypt.compare(user.password, reqUser.password)) {
+                resolve(user);
                 reject({
-                    status: 404,
+                    status: process.env.RESPONSE_STATUS_NOT_FOUND,
                     message: "Invalid crediential!",
                     data: null
                 });
@@ -33,29 +30,30 @@ const login = function(req, res) {
             if(user) {
                 resolve(user);
                 reject({
-                    status: 404,
+                    status: process.env.RESPONSE_STATUS_NOT_FOUND,
                     message: "Invalid User!",
                     data: false
                 });
             }
         });
     }
-    const signAsync = promisify(jwt.sign);
+
     const _generateToken = function(user) {
+        const signAsync = promisify(jwt.sign);
         return new Promise((resolve, reject) => {
             const tokenPayload = { userId: user._id };
             const signOptions = {expiresIn: "1h",};
             signAsync(tokenPayload, "CS572", signOptions)
               .then((token) => {
                 resolve({
-                  status: 200,
+                  status: process.env.RESPONSE_STATUS_OK,
                   message: "Login successfully!",
                   data: token,
                 });
               })
               .catch((error) => {
                 reject({
-                  status: 404,
+                  status: process.env.RESPONSE_STATUS_NOT_FOUND,
                   message: "Invalid Token!",
                   data: null,
                 });
@@ -70,7 +68,7 @@ const login = function(req, res) {
     }
     
     const _setError = function(error) {
-        status = 500;
+        status = process.env.RESPONSE_STATUS_INTERNAL_SERVER;
         response.message = error;
         response.data = null
     }
@@ -90,25 +88,86 @@ const login = function(req, res) {
 }
 
 const register = function(req, res) {
-    console.log("calling register", req.body)
+    console.log(req.body.password)
+    const _generateSalt = function() {
+        return new Promise((resolve, reject) => {
+          const saltRounds = parseInt(process.env.SALT_ROUND);
+          bcrypt.genSalt(saltRounds, (error, salt) => {
+            if (error) {
+              reject({
+                status: process.env.RESPONSE_STATUS_NOT_FOUND,
+                message: "Invalid Salt!",
+                data: null,
+              });
+            } else {
+              resolve(salt);
+              //console.log("salt", salt);
+            }
+          });
+        });
+      };
+    
+
+
+      const _geneateHash = function(password, salt) {
+        console.log("error", password ,"slat", salt);
+        return new Promise((resolve, reject) => {
+          bcrypt.hash(password, salt, (error, hashPassword) => {
+            if (error) {
+              reject({
+                status: process.env.RESPONSE_STATUS_NOT_FOUND,
+                message: "Invalid Token!",
+                data: null,
+              });
+            } else {
+              resolve(hashPassword);
+              console.log("salt", hashPassword);
+            }
+          });
+        });
+      };
+      
+    const _createUser = function(hashPassword, user) {
+        console .log("gsalt" , hashPassword , user)
+        user.password = hashPassword;
+        return new Promise((resolve, reject) => {
+            User.create(user).then((user) => {
+                resolve({
+                 status: process.env.RESPONSE_STATUS_OK,
+                  message: "User Create Successfully!",
+                  data: user
+                })
+            })
+            .catch((error) => {
+                reject({
+                  status: process.env.RESPONSE_STATUS_NOT_FOUND,
+                  message: "Invalid User!",
+                  data: null,
+                });
+              });
+        })
+    }
     const _setResponse = function(responseData) {
-        status = 200;
-        response.message = "User Register Successfully!";
+        status = responseData.status;
+        response.message = responseData.message;
         response.data = responseData.data
     }
     
     const _setError = function(error) {
-        status = 500;
+        status = process.env.RESPONSE_STATUS_INTERNAL_SERVER;
         response.message = error;
         response.data = null
     }
-    
-    User.create(req.body)
-    .then((user) => _setResponse(user))
-    .catch((error) => _setError(error))
+
+   _generateSalt()
+   .then((salt) => _geneateHash(req.body.password, salt))
+   .then((hashPassword) => _createUser(hashPassword, req.body))
+   .then((userResponse) => _setResponse (userResponse))
+   .catch((error) => _setError(error))
     .finally(() => {
         res.status(status).json(response);
     })
+   
 }
 
 module.exports =  {

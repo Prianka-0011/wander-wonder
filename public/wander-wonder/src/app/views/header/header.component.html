@@ -25,6 +25,9 @@
     <button *ngIf="!isLoginStatus" routerLink="register">
       Registar
     </button>
+    <button *ngIf="!isAdmin" routerLink="register">
+      Admin Panel
+    </button>
     <button *ngIf="isLoginStatus" (click) = "logOut()">
       Log Out
     </button>

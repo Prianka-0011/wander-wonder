@@ -1,7 +1,7 @@
 export class User {
   private name!:string;
   private username!:string;
-  private passworrd!:string;
+  private password!:string;
 
   get _name()
   {
@@ -13,7 +13,7 @@ export class User {
   }
   get _password()
   {
-    return this.passworrd
+    return this.password
   }
 
   set _name(name)
@@ -26,7 +26,7 @@ export class User {
   }
   set _password(password)
   {
-     this.passworrd = password
+     this.password = password
   }
 
   toJson():{}{

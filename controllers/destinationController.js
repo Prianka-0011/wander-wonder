@@ -3,7 +3,7 @@ require("dotenv").config();
 const jwt = require("jsonwebtoken");
 const DestinationModel = mongoose.model(process.env.DESTINATION_MODEL);
 
-let status = 200;
+let status = process.env.RESPONSE_STATUS_OK;
 let response = {
     message: null,
     data: null
@@ -31,13 +31,13 @@ const getAll = function(req,res) {
         return new Promise((resolve, reject) => {
             if(destinations) {
                 resolve({
-                    status: 200,
+                    status: process.env.RESPONSE_STATUS_OK,
                     message: `Total ${destinations.length} found`,
                     data: destinations 
                 });
             } else {
                 reject({
-                    status: 404,
+                    status: process.env.RESPONSE_STATUS_NOT_FOUND,
                     message: "Destination not found",
                     data: null 
                 });
@@ -52,7 +52,7 @@ const getAll = function(req,res) {
     }
     
     const _setError = function(error) {
-        status = 500;
+        status = process.env.RESPONSE_STATUS_INTERNAL_SERVER;
         response.message = error;
         response.data = null
     }
@@ -93,13 +93,13 @@ const countryWiseGetAll = function(req,res) {
         return new Promise((resolve, reject) => {
             if(destinations) {
                 resolve({
-                    status: 200,
+                    status: process.env.RESPONSE_STATUS_OK,
                     message: `Total ${destinations.length} found`,
                     data: destinations 
                 });
             } else {
                 reject({
-                    status: 404,
+                    status: process.env.RESPONSE_STATUS_NOT_FOUND,
                     message: "Destination not found",
                     data: null 
                 });
@@ -115,7 +115,7 @@ const countryWiseGetAll = function(req,res) {
     }
     
     const _setError = function(error) {
-        status = 500;
+        status = process.env.RESPONSE_STATUS_INTERNAL_SERVER;
         response.message = error;
         response.data = null
     }
@@ -134,13 +134,13 @@ const countryWiseGetAll = function(req,res) {
 const save=function (req,res) {
     
     const _setResponse = function(destinations) {
-        status = 200;
+        status = process.env.RESPONSE_STATUS_OK;
         response.message = `Destination save successfully!`;
         response.data = destinations
     }
     
     const _setError = function(error) {
-        status = 500;
+        status = process.env.RESPONSE_STATUS_INTERNAL_SERVER;
         response.message = error;
         response.data = null
     }
@@ -160,13 +160,13 @@ const getOne=function(req ,res){
         return new Promise((resolve, reject) => {
             if(destination) {
                 resolve({
-                    status: 200,
+                    status: process.env.RESPONSE_STATUS_OK,
                      message: "Destination found",
                     data: destination 
                 });
             } else {
                 reject({
-                    status: 404,
+                    status: process.env.RESPONSE_STATUS_NOT_FOUND,
                     message: "Destination not found",
                     data: null 
                 });
@@ -180,7 +180,7 @@ const getOne=function(req ,res){
     }
     
     const _setError = function(error) {
-        status = 500;
+        status = process.env.RESPONSE_STATUS_INTERNAL_SERVER;
         response.message = error;
         response.data = null
     }
@@ -202,13 +202,13 @@ const fullUpdateDestination = function(req, res) {
         return new Promise((resolve, reject) => {
             if(destination) {
                 resolve({
-                    status: 200,
+                    status: process.env.RESPONSE_STATUS_OK,
                     messag: "full Update successfully",
                     data: destination 
                 });
             } else {
                 reject({
-                    status: 404,
+                    status: process.env.RESPONSE_STATUS_NOT_FOUND,
                     message: "Destination not found",
                     data: null 
                 });
@@ -222,7 +222,7 @@ const fullUpdateDestination = function(req, res) {
     }
     
     const _setError = function(error) {
-        status = 500;
+        status = process.env.RESPONSE_STATUS_INTERNAL_SERVER;
         response.message = error;
         response.data = null
     }
@@ -243,14 +243,14 @@ const partialUpdateDestination = function(req ,res) {
         return new Promise((resolve, reject) => {
             if(destination) {
                 resolve({
-                    status: 200,
+                    status: process.env.RESPONSE_STATUS_OK,
                     
                 message: "full Update successfully",
                     data: destination 
                 });
             } else {
                 reject({
-                    status: 404,
+                    status: process.env.RESPONSE_STATUS_NOT_FOUND,
                         message: "Destination not found",
                     data: null 
                 });
@@ -264,7 +264,7 @@ const partialUpdateDestination = function(req ,res) {
     }
     
     const _setError = function(error) {
-        status = 500;
+        status = process.env.RESPONSE_STATUS_INTERNAL_SERVER;
         response.message = error;
         response.data = null
     }
@@ -284,13 +284,13 @@ const deleteDestination = function(req, res) {
         return new Promise((resolve, reject) => {
             if(destination) {
                 resolve({
-                    status: 200,
+                    status: process.env.RESPONSE_STATUS_OK,
                     message: "delete successfully",
                     data: destination 
                 });
             } else {
                 reject({
-                    status: 404,
+                    status: process.env.RESPONSE_STATUS_NOT_FOUND,
                     message: "Destination not found",
                     data: null 
                 });
@@ -304,7 +304,7 @@ const deleteDestination = function(req, res) {
     }
     
     const _setError = function(error) {
-        status = 500;
+        status = process.env.RESPONSE_STATUS_INTERNAL_SERVER;
         response.message = error;
         response.data = null
     }

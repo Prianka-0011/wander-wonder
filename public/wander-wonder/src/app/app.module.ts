@@ -13,6 +13,8 @@ import { RegisterComponent } from './views/register/register.component';
 import { AuthenticationService } from './shared/services/authentication.service';
 import { UserprofileComponent } from './views/userprofile/userprofile.component';
 import { HeaderComponent } from './views/header/header.component';
+import { AdminDestinationListComponent } from './views/admin-panel/admin-destination-list/admin-destination-list.component';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { HeaderComponent } from './views/header/header.component';
     LoginComponent,
     RegisterComponent,
     UserprofileComponent,
-    HeaderComponent
+    HeaderComponent,
+    AdminDestinationListComponent,
   ],
   imports: [
     BrowserModule,

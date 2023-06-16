@@ -14,6 +14,7 @@ import { AuthenticationService } from 'src/app/shared/services/authentication.se
 export class HeaderComponent implements OnInit{
   countryName: string=""
   isLoginStatus: boolean = false;
+  isAdmin: boolean = false
   private subscription!: Subscription;
 
   constructor(private authService: AuthenticationService,  private _router: Router) {}
