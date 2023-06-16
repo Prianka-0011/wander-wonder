@@ -21,6 +21,9 @@
       <button>
         About
       </button>
+      <button *ngIf="!isAdmin" routerLink="register">
+        Admin Panel
+      </button>
       <button *ngIf="!isLoginStatus" routerLink="login">
         Log In
       </button>

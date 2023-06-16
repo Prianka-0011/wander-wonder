@@ -6,6 +6,7 @@ import { UserprofileComponent } from './views/userprofile/userprofile.component'
 import { DestinationListComponent } from './views/destination-list/destination-list.component';
 import { RegisterComponent } from './views/register/register.component';
 
+
 const routes: Routes = [
   {
     path:"",
@@ -26,7 +27,8 @@ const routes: Routes = [
   {
     path:"register",
     component: RegisterComponent
-  }
+  },
+
 ];
 
 @NgModule({
