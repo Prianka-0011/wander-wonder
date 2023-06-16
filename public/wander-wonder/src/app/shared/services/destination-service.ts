@@ -3,7 +3,7 @@ import { Observable } from "rxjs";
 import { Destination } from "../models/destination-model";
 
 import { Injectable } from '@angular/core';
-import { DestinationList } from "../models/response";
+import { DestinationCount, DestinationList, OneDestination } from "../models/response";
 
 @Injectable()
 export class DestinationService {
@@ -15,6 +15,14 @@ export class DestinationService {
   {
     console.log(query)
     return this.http.get<DestinationList>(`${this.baseUrl}destinations?`+query);
+  }
+  getCount():Observable<DestinationCount>
+  {
+    return this.http.get<DestinationCount>(`${this.baseUrl}destinations/count`);
+  }
+  getOne(destinatinId: string):Observable<OneDestination>
+  {
+    return this.http.get<OneDestination>(`${this.baseUrl}destinations/`+destinatinId);
   }
   getAllByCountry(query: string):Observable<DestinationList>
   {

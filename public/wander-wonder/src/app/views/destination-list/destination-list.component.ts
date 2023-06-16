@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Destination } from 'src/app/shared/models/destination-model';
 import { DestinationService } from 'src/app/shared/services/destination-service';
 
@@ -14,7 +15,7 @@ export class DestinationListComponent implements OnInit{
   query = "";
   offset = 0;
   count = 10;
-  constructor(private destinationService: DestinationService) {}
+  constructor(private destinationService: DestinationService, private router: Router) {}
   ngOnInit(): void {
     this.getAllDestinationsList();
   }
@@ -41,6 +42,9 @@ export class DestinationListComponent implements OnInit{
         console.log(destination);
       }
     })
+  }
+  detailView(destinationId: string) {
+    this.router.navigate(["admin/destinations/destinationId"+destinationId])
   }
 
 }

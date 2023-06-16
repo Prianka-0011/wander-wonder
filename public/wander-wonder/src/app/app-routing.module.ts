@@ -5,6 +5,9 @@ import { LoginComponent } from './views/login/login.component';
 import { UserprofileComponent } from './views/userprofile/userprofile.component';
 import { DestinationListComponent } from './views/destination-list/destination-list.component';
 import { RegisterComponent } from './views/register/register.component';
+import { AdminDestinationListComponent } from './views/admin-panel/admin-destination-list/admin-destination-list.component';
+import { DestinatinationDetailComponent } from './views/destinatination-detail/destinatination-detail.component';
+import { AdminDestinationDetainComponent } from './views/admin-destination-detain/admin-destination-detain.component';
 
 
 const routes: Routes = [
@@ -25,9 +28,21 @@ const routes: Routes = [
     component: DestinationListComponent
   },
   {
+    path:"destinations/:destinationId",
+    component: DestinatinationDetailComponent
+  },
+  {
     path:"register",
     component: RegisterComponent
   },
+  {
+    path:"admin/destinations",
+    component: AdminDestinationListComponent
+  },
+  {
+    path:"admin/destinations/:destinationId",
+    component: AdminDestinationDetainComponent
+  }
 
 ];
 

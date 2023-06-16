@@ -14,6 +14,8 @@ import { AuthenticationService } from './shared/services/authentication.service'
 import { UserprofileComponent } from './views/userprofile/userprofile.component';
 import { HeaderComponent } from './views/header/header.component';
 import { AdminDestinationListComponent } from './views/admin-panel/admin-destination-list/admin-destination-list.component';
+import { DestinatinationDetailComponent } from './views/destinatination-detail/destinatination-detail.component';
+import { AdminDestinationDetainComponent } from './views/admin-destination-detain/admin-destination-detain.component';
 
 
 @NgModule({
@@ -26,6 +28,8 @@ import { AdminDestinationListComponent } from './views/admin-panel/admin-destina
     UserprofileComponent,
     HeaderComponent,
     AdminDestinationListComponent,
+    DestinatinationDetailComponent,
+    AdminDestinationDetainComponent,
   ],
   imports: [
     BrowserModule,

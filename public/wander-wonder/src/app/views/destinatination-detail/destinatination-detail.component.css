@@ -1,0 +1,35 @@
+.destination-details {
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+h2 {
+  margin-bottom: 10px;
+}
+
+.destination-info {
+  display: flex;
+}
+
+.image-container {
+  flex: 1;
+  margin-right: 20px;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.details-container {
+  flex: 2;
+}
+
+.details-container p {
+  margin-bottom: 10px;
+}
+
+ul {
+  margin-top: 0;
+  padding-left: 20px;
+}

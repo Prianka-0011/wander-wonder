@@ -1,1 +1,26 @@
-npm install bcrypt
+<div class="container">
+  <button class="btn" (click)="createNew()">Create New</button>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Country</th>
+        <th>Population</th>
+        <th>Expense</th>
+        <th>Photo</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let destination of destinations">
+        <td>{{destination.name}}</td>
+        <td>{{destination.country.name}}</td>
+        <td>{{destination.country.population}}</td>
+        <td>{{destination.expense}}</td>
+        <td><img src="../../../../assets/images/grece.jpg" alt=""></td>
+        <td><button class="edit-btn" (click)="editDestination()">Edit</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

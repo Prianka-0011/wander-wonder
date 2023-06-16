@@ -1,0 +1,20 @@
+<div class="destination-details">
+  <h2>{{ destination.name }}</h2>
+  <div class="destination-info">
+    <div class="image-container">
+      <img src="../../../assets/images/grece.jpg" alt="{{ destination.name }}">
+    </div>
+    <div class="details-container">
+      <p><strong>Description:</strong> {{ destination.description }}</p>
+      <p><strong>Expense:</strong> {{ destination.expense}}</p>
+      <p><strong>Country:</strong> {{ destination.country.name }}</p>
+      <p><strong>Population:</strong> {{ destination.country.population }}</p>
+      <p><strong>Airports:</strong></p>
+      <ul>
+        <li *ngFor="let airport of destination.airports">
+          {{ airport.name }}, {{ airport.city }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

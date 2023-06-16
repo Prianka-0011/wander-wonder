@@ -15,7 +15,7 @@
                 <p class="destination-name"><span>Name : </span>{{destination.name}}</p>
                 <p class="country"><span>country : </span>{{destination.country.name}}</p>
                 <p class="Population"><span>Population : </span>{{destination.country.population}}</p>
-                <button class="description-detail">details</button>
+                <button class="description-detail-button mt-4" (click)="detailView(destination._id)">details</button>
               </div>
             </div>
           </div>

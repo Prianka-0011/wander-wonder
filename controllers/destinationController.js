@@ -68,7 +68,28 @@ const getAll = function(req,res) {
         res.status(status).json(response);
     });
 }
+const getCount = function(req, res) {
+    const _setResponse = function(count) {
+        console.log("destination from response :",isValidDestination)
+        status =process.env.RESPONSE_STATUS_OK;
+        response.message = `Total ${count}`;
+        response.data = count
+    }
+    
+    const _setError = function(error) {
+        status = process.env.RESPONSE_STATUS_INTERNAL_SERVER;
+        response.message = error;
+        response.data = null
+    }
+    DestinationModel.find()
+    .count()
+    .exec()
+    .then((number) =>_setResponse(number))
+    .catch((error) => _setError(error))
+    .finally(() => {
 
+    })
+}
 const countryWiseGetAll = function(req,res) {
     console.log("Country wisedesitana")
     let query = {};
@@ -324,6 +345,7 @@ module.exports={
     deleteDestination,
     fullUpdateDestination,
     partialUpdateDestination,
-    countryWiseGetAll
+    countryWiseGetAll,
+    getCount
 }
 

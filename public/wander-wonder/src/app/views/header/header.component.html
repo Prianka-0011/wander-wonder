@@ -10,7 +10,7 @@
   </form>
 
   <div class="d-flex">
-    
+
     <div class="nav">
       <button routerLink="/">
         Home
@@ -21,7 +21,7 @@
       <button>
         About
       </button>
-      <button *ngIf="!isAdmin" routerLink="register">
+      <button *ngIf="!isAdmin" routerLink="admin/destinations">
         Admin Panel
       </button>
       <button *ngIf="!isLoginStatus" routerLink="login">
