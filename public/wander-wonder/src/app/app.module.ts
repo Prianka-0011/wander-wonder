@@ -16,6 +16,8 @@ import { HeaderComponent } from './views/header/header.component';
 import { AdminDestinationListComponent } from './views/admin-panel/admin-destination-list/admin-destination-list.component';
 import { DestinatinationDetailComponent } from './views/destinatination-detail/destinatination-detail.component';
 import { AdminDestinationDetainComponent } from './views/admin-destination-detain/admin-destination-detain.component';
+import { AdminDashboardComponent } from './views/admin-dashboard/admin-dashboard.component';
+import { SideBarComponent } from './views/side-bar/side-bar.component';
 
 
 @NgModule({
@@ -30,6 +32,8 @@ import { AdminDestinationDetainComponent } from './views/admin-destination-detai
     AdminDestinationListComponent,
     DestinatinationDetailComponent,
     AdminDestinationDetainComponent,
+    AdminDashboardComponent,
+    SideBarComponent,
   ],
   imports: [
     BrowserModule,

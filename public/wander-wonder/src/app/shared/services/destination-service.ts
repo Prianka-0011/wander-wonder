@@ -24,6 +24,11 @@ export class DestinationService {
   {
     return this.http.get<OneDestination>(`${this.baseUrl}destinations/`+destinatinId);
   }
+  save(destination:Destination):Observable<OneDestination>
+  {
+    return this.http.post<OneDestination>(`${this.baseUrl}destinations`,destination)
+  }
+
   getAllByCountry(query: string):Observable<DestinationList>
   {
     console.log(query)

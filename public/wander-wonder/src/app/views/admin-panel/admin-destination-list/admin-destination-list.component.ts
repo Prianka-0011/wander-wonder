@@ -36,7 +36,7 @@ editDestination() {
 }
 createNew()
 {
-  this.router.navigate(["admin/destinations/00000000-0000-0000-0000-000000000000"])
+  this.router.navigate(["admin/destinations/add"])
 }
 // onSubmit(searchForm: NgForm) {
 
