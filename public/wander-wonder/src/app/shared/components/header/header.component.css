@@ -16,14 +16,14 @@
 }
 
 .header p {
-  color: #15b1ee !important;
+  color: #fff !important;
   font-size: 1.4rem;
   font-size: 300;
   cursor: pointer;
 }
 
 .header p span {
-  color: #eecd15;
+  /* color: #fff; */
   font-size: 1.4rem;
   font-size: 300;
 }

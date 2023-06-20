@@ -22,7 +22,7 @@ const getAll = function(req,res) {
         count = parseInt(req.query.count);
     }
     if (req.query.search) {
-        query = {"name": { $regex: new RegExp(req.query.search, "i") } };
+        query = {"country.name": { $regex: new RegExp(req.query.search, "i") } };
     }
     const _tokenValidation = function(token) {
         
@@ -90,68 +90,7 @@ const getCount = function(req, res) {
 
     })
 }
-const countryWiseGetAll = function(req,res) {
-    // console.log("Country wisedesitana")
-    let query = {};
-    let offset = 0;
-    let count = 5;
-   
-    if(req.query.offset) {
-        offset = parseInt(req.query.offset)
-    }
-    if(req.query.count) {
-        count = parseInt(req.query.count);
-    }
-    if (req.query.search) {
-        query = { "country.name": { $regex: new RegExp(req.query.search, "i") } };
-    }
-    console.log(query);
-    
-    offset = parseInt(req.query.offset);
-    count = parseInt(req.query.count);
-    
-    const _foundDestination = function(destinations) {
-        return new Promise((resolve, reject) => {
-            if(destinations) {
-                resolve({
-                    status: process.env.RESPONSE_STATUS_OK,
-                    message: `Total ${destinations.length} found`,
-                    data: destinations 
-                });
-            } else {
-                reject({
-                    status: process.env.RESPONSE_STATUS_NOT_FOUND,
-                    message: "Destination not found",
-                    data: null 
-                });
-            }
-        });
-    }
-    
-    const _setResponse = function(isValidDestination) {
-        // console.log("destination from response :",isValidDestination)
-        status = isValidDestination.status;
-        response.message = isValidDestination.message;
-        response.data = isValidDestination.data
-    }
-    
-    const _setError = function(error) {
-        status = process.env.RESPONSE_STATUS_INTERNAL_SERVER;
-        response.message = error;
-        response.data = null
-    }
-    
-    DestinationModel.find(query)
-    .skip(offset)
-    .limit(count)
-    .exec()
-    .then((isFounDestination) => _foundDestination(isFounDestination))
-    .then((destination) => _setResponse(destination))
-    .catch((error) =>_setError(error))
-    .finally(() => {
-        res.status(status).json(response);
-    });
-}
+
 const save=function (req,res) {
     
     const _setResponse = function(destinations) {
@@ -345,7 +284,6 @@ module.exports={
     deleteDestination,
     fullUpdateDestination,
     partialUpdateDestination,
-    countryWiseGetAll,
     getCount
 }
 

@@ -30,8 +30,8 @@
         <div class="country-destination-box">
           <div>
             <p>Top destinations from</p>
-            <h1>France</h1>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.c</p>
+            <h1 class="mb-3">Bangladesh</h1>
+            <p>Discover the vibrant beauty of Bangladesh, a country known for its rich cultural heritage, stunning landscapes, and warm hospitality. Immerse yourself in the enchanting beauty of the Sundarbans, the world's largest mangrove forest, where you can spot elusive Bengal tigers and diverse wildlife species.</p>
           </div>
         </div>
       </div>
@@ -39,25 +39,12 @@
         <div class="destination-image-container">
           <div class="destination-image"
             *ngFor="let destination of topDestinations;">
-            <div>
+            <div routerLink="destinations/{{destination._id}}"
+              class="destination-wrapper">
               <img src="../../../assets/images/{{destination.photo}}" alt="">
+              <p>{{ destination.name }}</p>
             </div>
           </div>
-          <!-- <div class="destination-image">
-            <div>
-              <img src="../../../assets/images/listimg1.jpeg" alt="">
-            </div>
-          </div>
-          <div class="destination-image">
-            <div>
-              <img src="../../../assets/images/listimg3.jpg" alt="">
-            </div>
-          </div>
-          <div class="destination-image">
-            <div>
-              <img src="../../../assets/images/grece1.jpg" alt="">
-            </div>
-          </div> -->
         </div>
       </div>
     </div>
@@ -67,8 +54,8 @@
 <div class="catelog-detail">
   <div class="catelog-detail-overlay">
     <div class="container">
-      <div class="famous-detail-head">
-        <h1>World's best catalog <br> of the most popular travel destinations.</h1>
+      <div class="page-title mb-5 mt-5 pt-4 pb-3">
+        <p>World's best catalog <br> of the most popular travel destinations</p>
       </div>
       <div class="images-list-div">
         <div class="row">

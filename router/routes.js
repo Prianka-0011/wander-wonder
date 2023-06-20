@@ -12,9 +12,6 @@ router.route("/destinations")
 router.route("/destinations/count")
     .get(destinationController.getCount)
 
-router.route("/country/destinations")
-    .get(destinationController.countryWiseGetAll)
-
 router.route("/destinations/:destinationId")
     .get(destinationController.getOne)
     .delete(destinationController.deleteDestination)
