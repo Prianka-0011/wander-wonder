@@ -41,17 +41,6 @@ export class HeaderComponent implements OnInit{
 
   }
   onSubmit(searchForm: NgForm) {
-    console.log(this.countryName)
-    let query = "";
-    let offset = 0;
-    let count = 4;
-    query+= "offset="+offset;
-    query+= "&count="+count;
-    query+= "&search="+this.countryName
-    // this.destinationService.getAllByCountry(query).subscribe({
-    //   next:(destination) => {
-    //     console.log(destination);
-    //   }
-    // })
+    this._router.navigate(['/destinations'], { queryParams: { search: this.countryName } });    
   }
 }

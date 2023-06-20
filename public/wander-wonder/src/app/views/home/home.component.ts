@@ -41,11 +41,11 @@ export class HomeComponent implements OnInit {
     let query = "";
     let offset = 0;
     let count = 4;
-    let search = "France";
+    let search = "Bangladesh";
     query += "offset="+offset;
     query += "&count="+count;
     query += "&search="+search;
-    this.destinationService.getAllByCountry(query).subscribe({
+    this.destinationService.getAll(query).subscribe({
       next: (destinations) => {
         this.topDestinations = destinations.data;
       },

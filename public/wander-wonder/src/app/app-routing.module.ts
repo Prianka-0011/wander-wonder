@@ -35,19 +35,22 @@ const routes: Routes = [
     path:"register",
     component: RegisterComponent
   },
-  { path: 'admin', component: AdminDashboardComponent, children: [
-    { path: 'destinations',   component: AdminDestinationListComponent },
-    {
-      path:"destinations/add",
-      component: AdminDestinationDetainComponent
-    },
-    {
-      path:"destinations/:destinationId",
-      component: AdminDestinationDetainComponent
-    }
-  ]
-}
-
+  {
+    path: 'admin', component: AdminDashboardComponent, children: [
+      {
+        path: 'destinations',   component: AdminDestinationListComponent
+      },
+      {
+        path:"destinations/add",
+        component: AdminDestinationDetainComponent
+      },
+      {
+        path:"destinations/:destinationId",
+        component: AdminDestinationDetainComponent
+      }
+    ]
+  }
+  
 ];
 
 @NgModule({

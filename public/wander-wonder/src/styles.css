@@ -16,24 +16,10 @@
   color: #fff;
 }
 
-.images-list-div{
-  height: 100%;
-  width: 100%;
-  padding: 0 3rem;
-  margin-bottom: 5rem;
-}
-
-/* p,
-span {
-  margin: 0 !important;
-  padding: 0 !important;
-} */
-
-/* login */
-
 .login-form h1 {
   color: #eecd15;;
 }
+
 .login-container {
   position: relative;
   height: 100vh;
@@ -45,6 +31,7 @@ span {
   z-index: 1;
   /* background-image: url(./assets/images/loginbg.jpg); */
 }
+
 .login-container::before {
   content: "";
   top: 0;
