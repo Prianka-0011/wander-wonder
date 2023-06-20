@@ -15,14 +15,15 @@ export class LoginComponent {
   constructor(private  authencationService: AuthenticationService, private _router: Router){}
   onSubmit(form: any) {
     if (form.valid) {
-      console.log("user for login", this.user);
+
       this.authencationService.login(this.user).subscribe({
         next:(response) => {
-          //console.log(response);
+          console.log(response.data);
           if(response.data) {
             localStorage.setItem("token", response.data);
             localStorage.setItem("isLoggedIn", "true");
-            this._router.navigate(["profile"]);
+            this._router.navigate(["destinations"]);
+            console.log("login success")
             this.authencationService.isLoggedIn();
           }
         },

@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
 import { DestinationListComponent } from './views/destination-list/destination-list.component';
 import { DestinationService } from './shared/services/destination-service';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
 import { AuthenticationService } from './shared/services/authentication.service';
@@ -20,6 +20,7 @@ import { AdminDashboardComponent } from './views/admin-dashboard/admin-dashboard
 import { SideBarComponent } from './views/side-bar/side-bar.component';
 import { DestinationComponent } from './shared/components/destination/destination.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
+import { AuthInterceptorInterceptor } from 'healper/auth-interceptor.interceptor';
 
 
 @NgModule({
@@ -48,7 +49,12 @@ import { FooterComponent } from './shared/components/footer/footer.component';
   ],
   providers: [
     DestinationService,
-    AuthenticationService
+    AuthenticationService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

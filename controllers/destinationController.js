@@ -24,9 +24,7 @@ const getAll = function(req,res) {
     if (req.query.search) {
         query = {"country.name": { $regex: new RegExp(req.query.search, "i") } };
     }
-    const _tokenValidation = function(token) {
-        
-    }
+    
     const _foundDestination = function(destinations) {
         return new Promise((resolve, reject) => {
             if(destinations) {

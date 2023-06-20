@@ -12,6 +12,7 @@ let response = {
 }
 
 const login = function(req, res) {
+  console.log("login call");
     const _comparePassword = function(user, reqUser) {
         return new Promise((resolve, reject)=> {
             if(bcrypt.compare(user.password, reqUser.password)) {

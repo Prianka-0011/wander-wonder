@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { BehaviorSubject, Observable, of } from 'rxjs';
@@ -11,17 +11,18 @@ export class AuthenticationService {
   isLoginStatus: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   baseUrl="http://localhost:3000/api/"
 
-  header = { "Content-Type": "application/json" };
   constructor(private http:HttpClient) {
 
   }
 
   register(user:User){
-    return this.http.post(this.baseUrl+"register",user, { headers: this.header })
+    const headers = this.getHeaders();
+    return this.http.post(this.baseUrl+"register",user)
   }
 
   login(user:User):Observable<AuthenticatiobResponse>{
-    return this.http.post<AuthenticatiobResponse>(this.baseUrl+"login",user, { headers: this.header })
+    const headers = this.getHeaders();
+    return this.http.post<AuthenticatiobResponse>(this.baseUrl+"login",user, {headers})
   }
 
   isLoggedIn(): Observable<boolean> {
@@ -33,5 +34,11 @@ export class AuthenticationService {
     }
     return (this.isLoginStatus);
   }
-
+  private getHeaders(): HttpHeaders {
+    const token = localStorage.getItem('token');
+    if (token) {
+      return new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    }
+    return new HttpHeaders();
+  }
 }

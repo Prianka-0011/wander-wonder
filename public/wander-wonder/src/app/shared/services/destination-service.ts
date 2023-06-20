@@ -7,26 +7,28 @@ import { DestinationCount, DestinationList, OneDestination } from "../models/res
 
 @Injectable()
 export class DestinationService {
-  
+
   baseUrl="http://localhost:3000/api/"
-  
+
   constructor(private http:HttpClient) {
 
   }
 
   getAll(query: string):Observable<DestinationList> {
-    return this.http.get<DestinationList>(`${this.baseUrl}destinations?`+query);
+        return this.http.get<DestinationList>(`${this.baseUrl}destinations?`+query);
   }
 
   getCount():Observable<DestinationCount> {
-    return this.http.get<DestinationCount>(`${this.baseUrl}destinations/count`);
+        return this.http.get<DestinationCount>(`${this.baseUrl}destinations/count`);
   }
 
   getOne(destinatinId: string):Observable<OneDestination> {
-    return this.http.get<OneDestination>(`${this.baseUrl}destinations/`+destinatinId);
+        return this.http.get<OneDestination>(`${this.baseUrl}destinations/`+destinatinId);
   }
 
   save(destination:Destination):Observable<OneDestination> {
-    return this.http.post<OneDestination>(`${this.baseUrl}destinations`,destination)
+        return this.http.post<OneDestination>(`${this.baseUrl}destinations`,destination)
   }
+
+
 }
