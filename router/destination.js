@@ -21,11 +21,4 @@ router.route("/destinations/:destinationId")
     .put(destinationController.fullUpdateDestination)
     .patch(destinationController.partialUpdateDestination);
 
-//login
-router.route("/login")
-.post(authanticationController.login)
-
-router.route("/register")
-.post(authanticationController.register)
-
 module.exports = router;
