@@ -5,9 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "startbackend": "node app.js",
-    "startfrontend": "F:\\MWA\\wander-wonder && npm start",
-    "start": "concurrently \"npm run startbackend\" \"npm run startfrontend\""
+    "start": "node app.js"
+    
   },
   "author": "prianka",
   "license": "ISC",
