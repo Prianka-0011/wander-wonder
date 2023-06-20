@@ -16,111 +16,32 @@
   color: #fff;
 }
 
-.login-form h1 {
-  color: #eecd15;;
-}
-
-.login-container {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  background-repeat: no-repeat;
-  justify-content: center;
-  background-size: cover;
-  z-index: 1;
-  /* background-image: url(./assets/images/loginbg.jpg); */
-}
-
-.login-container::before {
-  content: "";
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 2;
-}
-.login-form label {
-  color: #eecd15;
-}
-.error{
-  color: #da1111;
-}
-
-.login-form {
-  max-width: 400px;
-  padding: 50px;
-  backdrop-filter: blur(1rem);
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  z-index: 3;
-}
-
-.login-form h2 {
-  text-align: center;
-}
-
-.login-form input[type="text"],
-.login-form input[type="password"] {
-  width: 100%;
-  padding: 4px;
-  border: none;
-  margin-bottom: 10px;
-  border-radius: .5rem;
-  border-radius: 3px;
-}
-
-.login-form input[type="text"]:focus {
-  border: none;
-  outline: none;
-}
-
-
-.login-form input[type="password"]:focus {
-  border: none;
-  outline: none;
-}
-
-.login-form button {
-  width: 100%;
-  padding: 5px;
-  background-color: rgb(6, 179, 185);
-  border: none;
-  border-radius: 5rem;
-  color: #fff;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-/* adminpanel */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: Arial, sans-serif;
-  font-size: 14px;
-  color: #333;
-}
-
-th, td {
-  padding: 10px;
-  text-align: left;
-  border-bottom: 1px solid #ccc;
-}
-
-th {
-  background-color: #f2f2f2;
-  font-weight: bold;
-}
-
-/* Table hover effect */
-tbody tr:hover {
-  background-color: #f9f9f9;
-}
-
 .page-title p {
   text-align: center;
   font-size: 2rem;  
+}
+
+.pull-right {
+  float: right;
+}
+
+.pull-left {
+  float: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+table th,
+table td {
+  border-color: #e2e2e2 !important;
+}
+
+.table thead th {
+  font-weight: 600;
 }

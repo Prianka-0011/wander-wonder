@@ -15,8 +15,8 @@ import { UserprofileComponent } from './views/userprofile/userprofile.component'
 import { HeaderComponent } from './shared/components/header/header.component';
 import { AdminDestinationListComponent } from './views/admin-panel/admin-destination-list/admin-destination-list.component';
 import { DestinatinationDetailComponent } from './views/destinatination-detail/destinatination-detail.component';
-import { AdminDestinationDetainComponent } from './views/admin-destination-detain/admin-destination-detain.component';
-import { AdminDashboardComponent } from './views/admin-dashboard/admin-dashboard.component';
+import { AdminDestinationDetailComponent } from './views/admin-panel/admin-destination-detail/admin-destination-detail.component';
+import { AdminDashboardComponent } from './views/admin-panel/admin-dashboard/admin-dashboard.component';
 import { SideBarComponent } from './views/side-bar/side-bar.component';
 import { DestinationComponent } from './shared/components/destination/destination.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
@@ -33,7 +33,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
     HeaderComponent,
     AdminDestinationListComponent,
     DestinatinationDetailComponent,
-    AdminDestinationDetainComponent,
+    AdminDestinationDetailComponent,
     AdminDashboardComponent,
     SideBarComponent,
     DestinationComponent,

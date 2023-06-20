@@ -1,5 +1,5 @@
 .destination-details table {
-  width: 100%;
+  width: 100% !important;
   max-width: 60rem;
 }
 

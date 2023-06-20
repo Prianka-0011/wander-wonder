@@ -15,32 +15,34 @@
         </p>
         
         <table class="table">
-          <tr>
-            <td>Description</td>
-            <td>{{ destination.description }}</td>
-          </tr>
-          <tr>
-            <td>Expenses</td>
-            <td>{{ destination.expense }}</td>
-          </tr>
-          <tr>
-            <td>Name of Country</td>
-            <td>{{ destination.country.name }}</td>
-          </tr>
-          <tr>
-            <td>Population</td>
-            <td>{{ destination.country.population }}</td>
-          </tr>
-          <tr>
-            <td>Airports</td>
-            <td>
-              <ul>
-                <li *ngFor="let airport of destination.airports">
-                  {{ airport.name }}, {{ airport.city }}
-                </li>
-              </ul>
-            </td>
-          </tr>
+          <tbody>
+            <tr>
+              <td>Description</td>
+              <td>{{ destination.description }}</td>
+            </tr>
+            <tr>
+              <td>Expenses</td>
+              <td>{{ destination.expense }}</td>
+            </tr>
+            <tr>
+              <td>Name of Country</td>
+              <td>{{ destination.country.name }}</td>
+            </tr>
+            <tr>
+              <td>Population</td>
+              <td>{{ destination.country.population }}</td>
+            </tr>
+            <tr>
+              <td>Airports</td>
+              <td>
+                <ul>
+                  <li *ngFor="let airport of destination.airports">
+                    {{ airport.name }}, {{ airport.city }}
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
         </table>
 
         <button routerLink="/destinations"

@@ -11,10 +11,9 @@ let response = {
 
 const getAll = function(req,res) {
     let query = {};
-    // console.log(req.query);
     let offset = 0;
     let count = 5;
-   
+    
     if(req.query.offset) {
         offset = parseInt(req.query.offset)
     }
@@ -58,19 +57,19 @@ const getAll = function(req,res) {
     }
     
     DestinationModel.find(query)
-    .skip(offset)
-    .limit(count)
-    .exec()
-    .then((isFounDestination) => _foundDestination(isFounDestination))
-    .then((destination) => _setResponse(destination))
-    .catch((error) =>_setError(error))
-    .finally(() => {
-        res.status(status).json(response);
-    });
-}
+        .skip(offset)
+        .limit(count)
+        .exec()
+        .then((isFounDestination) => _foundDestination(isFounDestination))
+        .then((destination) => _setResponse(destination))
+        .catch((error) =>_setError(error))
+        .finally(() => {
+            res.status(status).json(response);
+        });
+    }
+
 const getCount = function(req, res) {
     const _setResponse = function(count) {
-        // console.log("destination from response :",isValidDestination)
         status =process.env.RESPONSE_STATUS_OK;
         response.message = `Total ${count}`;
         response.data = count
@@ -81,14 +80,15 @@ const getCount = function(req, res) {
         response.message = error;
         response.data = null
     }
-    DestinationModel.find()
-    .count()
-    .exec()
-    .then((number) =>_setResponse(number))
-    .catch((error) => _setError(error))
-    .finally(() => {
 
-    })
+    DestinationModel.find()
+        .count()
+        .exec()
+        .then((number) =>_setResponse(number))
+        .catch((error) => _setError(error))
+        .finally(() => {
+            res.status(status).json(response);
+        });
 }
 
 const save=function (req,res) {
@@ -104,7 +104,7 @@ const save=function (req,res) {
         response.message = error;
         response.data = null
     }
-
+    
     DestinationModel.create(req.body)
     .then((destination) => _setResponse(destination))
     .catch((error) => _setError(error))
@@ -121,7 +121,7 @@ const getOne=function(req ,res){
             if(destination) {
                 resolve({
                     status: process.env.RESPONSE_STATUS_OK,
-                     message: "Destination found",
+                    message: "Destination found",
                     data: destination 
                 });
             } else {
@@ -198,20 +198,20 @@ const fullUpdateDestination = function(req, res) {
 
 const partialUpdateDestination = function(req ,res) {
     const destinationId = req.params.destinationId;
-
+    
     const _foundDestination = function(destination) {
         return new Promise((resolve, reject) => {
             if(destination) {
                 resolve({
                     status: process.env.RESPONSE_STATUS_OK,
                     
-                message: "full Update successfully",
+                    message: "full Update successfully",
                     data: destination 
                 });
             } else {
                 reject({
                     status: process.env.RESPONSE_STATUS_NOT_FOUND,
-                        message: "Destination not found",
+                    message: "Destination not found",
                     data: null 
                 });
             }

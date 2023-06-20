@@ -15,7 +15,7 @@ export class DestinationService {
   }
 
   getAll(query: string):Observable<DestinationList> {
-    return this.http.get<DestinationList>(`${this.baseUrl}destinations?`+query);
+    return this.http.get<DestinationList>(`${this.baseUrl}destinations`+query);
   }
 
   getCount():Observable<DestinationCount> {
@@ -28,5 +28,13 @@ export class DestinationService {
 
   save(destination:Destination):Observable<OneDestination> {
     return this.http.post<OneDestination>(`${this.baseUrl}destinations`,destination)
+  }
+
+  update(destination:Destination):Observable<OneDestination> {
+    return this.http.put<OneDestination>(`${this.baseUrl}destinations/${destination._id}`,destination)
+  }
+
+  delete(destination: Destination):Observable<OneDestination> {
+    return this.http.delete<OneDestination>(`${this.baseUrl}destinations/${destination._id}`)
   }
 }

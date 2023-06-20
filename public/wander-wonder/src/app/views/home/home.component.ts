@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
     let query = "";
     let offset = 0;
     let count = 6;
-    query+= "offset="+offset;
+    query+= "?offset="+offset;
     query+= "&count="+count;
     this.destinationService.getAll(query).subscribe({
       next: (destinations) => {
@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
     let offset = 0;
     let count = 4;
     let search = "Bangladesh";
-    query += "offset="+offset;
+    query += "?offset="+offset;
     query += "&count="+count;
     query += "&search="+search;
     this.destinationService.getAll(query).subscribe({

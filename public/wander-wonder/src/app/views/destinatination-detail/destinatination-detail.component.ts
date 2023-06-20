@@ -9,16 +9,19 @@ import { DestinationService } from 'src/app/shared/services/destination-service'
   styleUrls: ['./destinatination-detail.component.css']
 })
 export class DestinatinationDetailComponent implements OnInit{
+
   destination!: Destination;
+
   constructor(private destinationService: DestinationService, private route: ActivatedRoute) {}
+
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       const destinationId = params['destinationId'];
-      this.getDestinationDetain(destinationId)
-
+      this.getDestinationDetail(destinationId)
     });
   }
-  getDestinationDetain(destinationId:string) {
+
+  getDestinationDetail(destinationId:string) {
     this.destinationService.getOne(destinationId).subscribe({
       next:(destination) => {
         console.log(destination);

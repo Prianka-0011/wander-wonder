@@ -1,0 +1,10 @@
+.admin-div {
+  margin-top: -1.7rem;
+  display: flex;
+  justify-self: center;
+}
+
+.admin-div .admin-content {
+  width: calc(100% - 200px);
+  padding: 30px;
+}
