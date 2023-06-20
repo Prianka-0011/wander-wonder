@@ -37,7 +37,7 @@ const routes: Routes = [
     component: RegisterComponent
   },
   { path: 'admin', component: AdminDashboardComponent, children: [
-    { path: 'destinations', component: AdminDestinationListComponent },
+    { path: 'destinations',   component: AdminDestinationListComponent },
     {
       path:"destinations/add",
       component: AdminDestinationDetainComponent

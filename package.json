@@ -1,11 +1,13 @@
 {
   "name": "personalhobbyproject",
   "version": "1.0.0",
-  "description": "wander wonder ",
+  "description": "wander wonder",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon"
+    "startbackend": "node app.js",
+    "startfrontend": "F:\\MWA\\wander-wonder && npm start",
+    "start": "concurrently \"npm run startbackend\" \"npm run startfrontend\""
   },
   "author": "prianka",
   "license": "ISC",
