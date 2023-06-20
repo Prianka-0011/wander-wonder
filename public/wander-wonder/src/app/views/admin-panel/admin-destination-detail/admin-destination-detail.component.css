@@ -1,0 +1,13 @@
+.airport-detail .table * {
+  font-weight: normal;
+}
+
+.airport-detail .table tbody tr:last-of-type td {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.airport-detail label {
+  font-weight: 500;
+  /* color: rgb(151, 151, 151); */
+}

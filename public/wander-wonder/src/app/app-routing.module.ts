@@ -7,8 +7,8 @@ import { DestinationListComponent } from './views/destination-list/destination-l
 import { RegisterComponent } from './views/register/register.component';
 import { AdminDestinationListComponent } from './views/admin-panel/admin-destination-list/admin-destination-list.component';
 import { DestinatinationDetailComponent } from './views/destinatination-detail/destinatination-detail.component';
-import { AdminDestinationDetainComponent } from './views/admin-destination-detain/admin-destination-detain.component';
-import { AdminDashboardComponent } from './views/admin-dashboard/admin-dashboard.component';
+import { AdminDestinationDetailComponent } from './views/admin-panel/admin-destination-detail/admin-destination-detail.component';
+import { AdminDashboardComponent } from './views/admin-panel/admin-dashboard/admin-dashboard.component';
 
 const routes: Routes = [
   {
@@ -42,11 +42,11 @@ const routes: Routes = [
       },
       {
         path:"destinations/add",
-        component: AdminDestinationDetainComponent
+        component: AdminDestinationDetailComponent
       },
       {
         path:"destinations/:destinationId",
-        component: AdminDestinationDetainComponent
+        component: AdminDestinationDetailComponent
       }
     ]
   }

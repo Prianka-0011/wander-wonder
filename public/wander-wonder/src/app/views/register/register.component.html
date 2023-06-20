@@ -1,26 +1,28 @@
 <div class="login-container">
-  <div class="login-form ">
-    <h1>Sign Up</h1>
+  <div class="login-form">
+
+    <h1 class="mb-4">Sign Up</h1>
+
     <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-      <div>
-        <label>Name:</label>
-        <input type="text" formControlName="name">
+      <div class="form-group mb-3">
+        <label class="mb-2">Name:</label>
+        <input class="form-control" type="text" formControlName="name">
         <div *ngIf="registrationForm.controls['name'].touched && registrationForm.controls['name'].errors?.['required']" class="error-message">
           Name is required.
         </div>
       </div>
 
-      <div>
-        <label>Username:</label>
-        <input type="text" formControlName="username">
+      <div class="form-group mb-3">
+        <label class="mb-2">Username:</label>
+        <input class="form-control" type="text" formControlName="username">
         <div *ngIf="registrationForm.controls['username'].touched && registrationForm.controls['username'].errors?.['required']" class="error-message">
           Username is required.
         </div>
       </div>
 
-      <div>
-        <label>Password:</label>
-        <input type="password" formControlName="password">
+      <div class="form-group mb-3">
+        <label class="mb-2">Password:</label>
+        <input class="form-control" type="password" formControlName="password">
         <div *ngIf="registrationForm.controls['password'].touched && registrationForm.controls['password'].errors?.['required']" class="error-message">
           Password is required.
         </div>
@@ -29,9 +31,9 @@
         </div>
       </div>
 
-      <div>
-        <label>Confirm Password:</label>
-        <input type="password" formControlName="confirmPassword">
+      <div class="form-group mb-3">
+        <label class="mb-2">Confirm Password:</label>
+        <input class="form-control" type="password" formControlName="confirmPassword">
         <div *ngIf="registrationForm.controls['confirmPassword'].touched && registrationForm.controls['confirmPassword'].errors?.['required']" class="error-message">
           Confirm Password is required.
         </div>
@@ -40,7 +42,7 @@
         </div>
       </div>
 
-      <button type="submit">Register</button>
+      <button class="btn btn-primary" type="submit">Register</button>
     </form>
   </div>
 </div>

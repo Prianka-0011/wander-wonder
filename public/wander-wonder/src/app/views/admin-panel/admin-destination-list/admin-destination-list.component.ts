@@ -9,45 +9,63 @@ import { DestinationService } from 'src/app/shared/services/destination-service'
   templateUrl: './admin-destination-list.component.html',
   styleUrls: ['./admin-destination-list.component.css']
 })
-export class AdminDestinationListComponent implements OnInit{
+export class AdminDestinationListComponent implements OnInit {
+
   destinationName: string=""
   destinations!: Destination[];
   query = "";
   offset = 0;
   count = 10;
-constructor(private destinationService: DestinationService, private router: Router) {}
-ngOnInit(): void {
-  this.getAllDestinationsList();
-}
+  totalDestinations = 0;
 
-getAllDestinationsList() {
-  this.query+= "offset="+this.offset;
-  this.query+= "&count="+this.count;
+  constructor(private destinationService: DestinationService, private router: Router) {}
 
-  this.destinationService.getAll(this.query).subscribe({
-    next:(destination) => {
-      this.destinations = destination.data;
-      console.log(destination);
-    }
-  })
-}
-editDestination() {
+  ngOnInit(): void {
+    this.getAllDestinationsList();
+    this.getCount();
+  }
+  
+  getAllDestinationsList() {
+    this.query = "?offset="+this.offset+"&count="+this.count;
+    this.destinationService.getAll(this.query).subscribe({
+      next:(destination) => {
+        this.destinations = destination.data;
+      }
+    })
+  }
 
-}
-createNew()
-{
-  this.router.navigate(["admin/destinations/add"])
-}
-// onSubmit(searchForm: NgForm) {
+  editDestination(destination: Destination) {
+    this.router.navigate(["admin/destinations/"+destination._id]);    
+  }
 
-//   this.query+= "offset="+this.offset;
-//   this.query+= "&count="+this.count;
-//   this.query+= "&search="+this.destinationName
-//   this.destinationService.getAll(this.query).subscribe({
-//     next:(destination) => {
-//       this.destinations = destination.data;
-//       console.log(destination);
-//     }
-//   })
-// }
+  createNew() {
+    this.router.navigate(["admin/destinations/add"])
+  }
+
+  getCount() {
+    this.destinationService.getCount().subscribe({
+      next: (destination) => {
+        this.totalDestinations = destination.data;
+      }
+    });
+  }
+
+  prev() {
+    this.offset = this.offset - this.count;
+    this.getAllDestinationsList();
+  }
+
+  next() {
+    this.offset = this.offset + this.count;
+    this.getAllDestinationsList();
+  }
+
+  disablePrev() {
+    return this.offset === 0;
+  }
+
+  disableNext() {
+    return(+this.offset + this.count) >= this.totalDestinations;
+  }
+
 }

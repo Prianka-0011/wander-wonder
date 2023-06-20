@@ -1,0 +1,53 @@
+.login-container {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  background-repeat: no-repeat;
+  justify-content: center;
+  background-size: cover;
+  z-index: 1;
+  background-color: #fff;
+  background-image: url(../../../assets/images/tokyo.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin-top: -6.7rem;
+}
+
+.login-form h1 {
+  color: #ffffff;;
+  font-size: 1.5rem;
+}
+
+.login-container::before {
+  content: "";
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+.login-form label {
+  color: #fff;
+}
+
+.error{
+  color: #da1111;
+}
+
+.login-form {
+  width: 400px;
+  padding: 50px;
+  backdrop-filter: blur(1rem);
+  border-radius: 1%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  z-index: 3;
+}
+
+.login-form h2 {
+  text-align: center;
+}

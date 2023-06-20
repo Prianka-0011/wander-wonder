@@ -12,8 +12,9 @@ export class DestinationListComponent implements OnInit {
   destinationName: string = "";
   destinations!: Destination[];
   offset = 0;
-  count = 10;
+  count = 6;
   search = "";
+  totalDestinations = 0;
 
   constructor(
     private destinationService: DestinationService,
@@ -40,13 +41,16 @@ export class DestinationListComponent implements OnInit {
     this.destinationService.getAll(query).subscribe({
       next: (destination) => {
         this.destinations = destination.data;
-        console.log(destination);
       }
     });
   }
 
   getCount() {
-
+    this.destinationService.getCount().subscribe({
+      next: (destination) => {
+        this.totalDestinations = destination.data;
+      }
+    });
   }
 
   detailView(destinationId: string) {
@@ -68,7 +72,7 @@ export class DestinationListComponent implements OnInit {
   }
 
   disableNext() {
-    // return(+this.offset + this.count) >= this.dishCount;
+    return(+this.offset + this.count) >= this.totalDestinations;
   }
 
 }

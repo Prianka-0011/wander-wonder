@@ -1,0 +1,83 @@
+<div class="airport-detail">
+  <div class="row">
+    <div class="col-md-6 pb-4">
+      
+      <h4 class="mb-4">Destination Details</h4>
+
+      <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group mb-3">
+          <label class="mb-2">Name</label>
+          <input class="form-control" type="hidden" formControlName="_id">
+          <input class="form-control" type="text" formControlName="name" class="form-control" required>
+        </div>
+        <div class="form-group mb-3">
+          <label class="mb-2">Description</label>
+          <textarea formControlName="description"  class="form-control"></textarea>
+        </div>
+        <div class="form-group mb-3">
+          <label class="mb-2">Expense</label>
+          <input class="form-control" type="number" formControlName="expense" class="form-control" required>
+        </div>
+        <div class="form-group mb-3">
+          <label class="mb-2">Photo</label>
+          <input class="form-control" type="file" class="form-control" (change)="onFileSelected($event)" formControlName="photo">
+        </div>
+
+        <label class="mb-2">Country</label>
+
+        <div class="d-flex" formGroupName="country">
+          <div class="form-group flex-fill me-4">
+            <label class="mb-2">Name</label>
+            <input class="form-control"
+              type="text"
+              placeholder="name"
+              formControlName="name"
+              required/>
+          </div>
+          <div class="form-group flex-fill">
+            <label class="mb-2">Population</label>
+            <input class="form-control" type="number"
+              class="form-control"
+              placeholder="Population value"
+              formControlName="population"
+              required/>
+          </div>
+        </div>
+
+        <label class="mb-2 mt-3">Airports</label>
+
+        <table class="table" formArrayName="airports">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>City</th>
+              <th width="30"></th>
+            </tr>
+          </thead>
+          <ng-container *ngFor="let airport of airports.controls; let i = index" [formGroupName]="i">
+            <tbody>
+              <tr>
+                <td class="pe-2"><input class="form-control" type="text" formControlName="name"></td>
+                <td class="pe-2"><input class="form-control" type="text" formControlName="city"></td>
+                <td><button class="btn btn-danger" (click)="removeAirport(i)">×</button></td>
+              </tr>
+            </tbody>
+          </ng-container>
+        </table>
+
+        <div class="text-center">
+          <button type="button" class="btn btn-warning" (click)="addAirport()" cl>+ Airport</button>
+        </div>
+
+
+        <div class="airport-btn-group">
+          <button type="submit" class="btn btn-primary mt-4" [disabled]="editForm.invalid">Save Destination</button>
+        </div>
+          
+      </form>
+      <button *ngIf="isUpdating" class="btn btn-danger mt-4 me-3" (click)="deleteDestination($event)">Delete Destination</button>
+    </div>
+
+  </div>
+</div>
