@@ -6,7 +6,7 @@
           <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
             <div>
               <label>Name</label>
-              <input type="hidden" formControlName="_Id">
+              <input type="hidden" formControlName="_id">
               <input type="text" formControlName="name" class="form-control" required>
             </div>
             <div>
@@ -19,7 +19,7 @@
             </div>
             <div>
               <label>Photo</label>
-              <input type="file" class="form-control" formControlName="photo" required>
+              <input type="file" class="form-control" (change)="onFileSelected($event)" formControlName="photo" required>
             </div>
             <div>
               <label>Country :</label>

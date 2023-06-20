@@ -15,6 +15,7 @@ export class AdminDestinationDetainComponent implements OnInit {
 
   ngOnInit() {
     this.editForm = this.formBuilder.group({
+      _id: new FormControl(),
       name: new FormControl(),
       description: new FormControl(),
       expense: new FormControl(),
@@ -48,13 +49,19 @@ export class AdminDestinationDetainComponent implements OnInit {
     airports.removeAt(index);
   }
 
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    console.log(file)
+    this.editForm.patchValue({ photo: file });
+    event.target.value = '';
+  }
 
   onSubmit() {
     this.destination = new Destination();
     if (this.editForm.valid) {
 
       const updatedDestination = this.editForm.value;
-      console.log(updatedDestination);
+      //console.log(updatedDestination);
     this.destination = updatedDestination;
     this.destinationService.save(this.destination)
      console.log("destination",this.destination);
