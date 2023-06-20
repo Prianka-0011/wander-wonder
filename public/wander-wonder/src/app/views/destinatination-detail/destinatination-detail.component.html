@@ -1,20 +1,54 @@
-<div class="destination-details">
-  <h2>{{ destination.name }}</h2>
-  <div class="destination-info">
-    <div class="image-container">
-      <img src="../../../assets/images/grece.jpg" alt="{{ destination.name }}">
+<div class="destination-details container row">
+  
+
+  <div class="destination-content col-md-12">
+    <div class="row">
+      
+      <div class="col-md-6">
+        <img src="../../../assets/images/{{destination.photo}}" alt="{{ destination.name }}">
+      </div>
+
+      <div class="col-md-6">
+        
+        <p class="col-md-12 description-title">
+          {{ destination.name }}
+        </p>
+        
+        <table class="table">
+          <tr>
+            <td>Description</td>
+            <td>{{ destination.description }}</td>
+          </tr>
+          <tr>
+            <td>Expenses</td>
+            <td>{{ destination.expense }}</td>
+          </tr>
+          <tr>
+            <td>Name of Country</td>
+            <td>{{ destination.country.name }}</td>
+          </tr>
+          <tr>
+            <td>Population</td>
+            <td>{{ destination.country.population }}</td>
+          </tr>
+          <tr>
+            <td>Airports</td>
+            <td>
+              <ul>
+                <li *ngFor="let airport of destination.airports">
+                  {{ airport.name }}, {{ airport.city }}
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+
+        <button routerLink="/destinations"
+          class="btn btn-warning mt-4">Back</button>
+      </div>
+
     </div>
-    <div class="details-container">
-      <p><strong>Description:</strong> {{ destination.description }}</p>
-      <p><strong>Expense:</strong> {{ destination.expense}}</p>
-      <p><strong>Country:</strong> {{ destination.country.name }}</p>
-      <p><strong>Population:</strong> {{ destination.country.population }}</p>
-      <p><strong>Airports:</strong></p>
-      <ul>
-        <li *ngFor="let airport of destination.airports">
-          {{ airport.name }}, {{ airport.city }}
-        </li>
-      </ul>
-    </div>
+
   </div>
+
 </div>

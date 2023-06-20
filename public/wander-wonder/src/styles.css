@@ -1,11 +1,10 @@
-
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 * {
   margin: 0;
   padding: 0;
   font-family: 'Poppins';
-  font-size: 0.96rem;
+  font-size: 0.9rem;
 }
 
 .catelog-detail h1 {
@@ -23,77 +22,6 @@
   padding: 0 3rem;
   margin-bottom: 5rem;
 }
-
-.desination-box {
-  height: auto;
-  width: 100%;
-  border-radius:.8rem;
-  background-color: #fff;
-  box-shadow: 0 20px 30px #41383c;
-
-}
-
-.img-box{
-  overflow: hidden;
-  position: relative;
-  border-radius: .8rem .8rem 0 0;
-}
-/* .img-box::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-} */
-.img-box img {
-  height: 15rem;
-  width: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-.img-box img:hover{
-  transform: scale(1.2);
-}
-.destination-details {
-  text-align: left;
-  padding: 1.5rem;
-  height: 100%;
-  z-index: 10;
-}
-.destination-details p {
-  padding: 0;
-  margin: 0;
-  /* font-size: .8rem; */
-  font-weight: 500;
-}
-.destination-details span {
-  font-size: .9rem;
-  font-weight: bold;
-}
-
-.destination-name {
-  font-size: 1.5rem;
-  font-weight: 500;
-  margin-bottom: 0.7rem !important;
-}
-
-.description-detail-button {
-  border: none;
-  cursor: pointer;
-  outline: none;
-  font-size: .9rem;
-  background-color:rgb(185, 6, 6);;
-  padding: .5rem 1rem;
-  color: #fff;
-  width: 100%;
-  border-radius: 2rem;
-  border-radius: 2;
-}
-
 
 /* p,
 span {
@@ -115,7 +43,7 @@ span {
   justify-content: center;
   background-size: cover;
   z-index: 1;
-  background-image: url(./assets/images/loginbg.jpg);
+  /* background-image: url(./assets/images/loginbg.jpg); */
 }
 .login-container::before {
   content: "";
@@ -203,4 +131,9 @@ th {
 /* Table hover effect */
 tbody tr:hover {
   background-color: #f9f9f9;
+}
+
+.page-title p {
+  text-align: center;
+  font-size: 2rem;  
 }

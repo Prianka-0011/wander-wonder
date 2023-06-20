@@ -1,10 +1,26 @@
+.hero {
+  position: relative;
+  margin-top: -6.7rem;
+  height: 100vh;
+}
+
 .hero .hero-image {
-  background-image: url("../../../assets/images/header.jpg");
+  background-image: url("https://cdn.unenvironment.org/2022-09/nicolai-kramer-unsplash.jpg");
   background-size: cover;
-  height: 100vh; /* adjust the height as needed */
   background-repeat: no-repeat;
-  background-position: center;
-  object-fit:contain;
+  background-position: center 0;
+  object-fit: contain;
+  height: 100%;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .best-place {
@@ -19,17 +35,17 @@
   padding: 0 3rem;
 }
 
-.bg-image {
+.home-destination-card {
   height: auto;
   width: 100%;
   position: relative;
-  box-shadow: 0 10px 20px #afadad;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
   transition: 0.3s;
 }
 
-.bg-image img {
+.home-destination-card img {
   height: 17rem;
   width: 100%;
   object-fit: cover;
@@ -64,11 +80,11 @@
   margin-top: 1rem;
 }
 
-.bg-image:hover {
+.home-destination-card:hover {
   transform: scale(1.05);
 }
 
-.bg-image::before {
+.home-destination-card::before {
   content: "";
   position: absolute;
   top: 0;
@@ -80,8 +96,8 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.catelog-detail-overlay{
-  background-image: url(../../../assets/images/london.jpg);
+.catelog-detail-overlay {
+  background-image: url(../../../assets/images/sydney.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden;

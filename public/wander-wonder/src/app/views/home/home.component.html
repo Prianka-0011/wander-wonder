@@ -1,43 +1,23 @@
-<app-header></app-header>
-<header class="hero">
+<div class="hero">
   <div class="hero-image"></div>
-</header>
+</div>
 
 <div class="best-place">
   <div class="container">
     <div class="images-div">
       <div class="row ">
-        <div class="col-md-4 col-12 col-lg-4 ">
-          <div class="bg-image">
-            <img src="../../../assets/images/grece1.jpg" alt="">
-            <div *ngIf="destination" class="details">
-              <p class="mb-4">{{destination[0].description.slice(0, 70)}}...</p>
-              <p class="head-p">{{destination[0].name}}</p>
-              <button class="mt-4">Details</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-12 col-lg-4 ">
-          <div class="bg-image transform-y">
-            <img src="../../../assets/images/grece1.jpg" alt="">
-            <div *ngIf="destination" class="details">
-              <p class="mb-4">{{destination[1].description.slice(0, 70)}}...</p>
-              <p class="head-p">{{destination[1].name}}</p>
-              <button class="mt-4">Details</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-12 col-lg-4">
-          <div *ngIf="destination" class="bg-image">
-            <img src="../../../assets/images/london.jpg" alt="">
+        <div *ngFor="let destination of destinations.slice(0, 3)"
+          class="col-md-4 col-12 col-lg-4">
+          <div class="home-destination-card">
+            <img src="../../../assets/images/{{destination.photo}}" alt="">
             <div class="details">
-              <p class="mb-4">{{destination[2].description.slice(0, 70)}}...</p>
-              <p class="head-p">{{destination[2].name}}</p>
-              <button class="mt-4">Details</button>
+              <p class="mb-4">{{destination.description.slice(0, 70)}}...</p>
+              <p class="head-p">{{destination.name}}</p>
+              <button class="mt-4"
+                routerLink="/destinations/{{destination._id}}">Details</button>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -50,20 +30,20 @@
         <div class="country-destination-box">
           <div>
             <p>Top destinations from</p>
-            <h1>Bangladesh</h1>
+            <h1>France</h1>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.c</p>
-            <!-- <button>Explore</button> -->
           </div>
         </div>
       </div>
       <div class="col-12 col-md-8 col-lg-8">
         <div class="destination-image-container">
-          <div class="destination-image">
+          <div class="destination-image"
+            *ngFor="let destination of topDestinations;">
             <div>
-              <img src="../../../assets/images/list4.jpg" alt="">
+              <img src="../../../assets/images/{{destination.photo}}" alt="">
             </div>
           </div>
-          <div class="destination-image">
+          <!-- <div class="destination-image">
             <div>
               <img src="../../../assets/images/listimg1.jpeg" alt="">
             </div>
@@ -77,7 +57,7 @@
             <div>
               <img src="../../../assets/images/grece1.jpg" alt="">
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -92,49 +72,10 @@
       </div>
       <div class="images-list-div">
         <div class="row">
-          <div class="col-md-4 col-12 col-lg-4 ">
-            <div class="desination-box">
-              <div class="img-box">
-                <img src="../../../assets/images/list4.jpg" alt="">
-              </div>
 
-              <div class="destination-details">
-                <p class="destination-name">Tower of London</p>
-                <p class="country"><span>Country: </span>United Kingdom</p>
-                <p class="Population"><span>Population: </span>599</p>
-                <p class="description">In publishing and graphic design, Lorem ipsum is a</p>
-                <button class="description-detail-button mt-4">Explore</button>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 col-12 col-lg-4 ">
-            <div class="desination-box">
-              <div class="img-box">
-                <img src="../../../assets/images/listimg2.jpg" alt="">
-              </div>
-
-              <div class="destination-details">
-                <p class="destination-name">Tower of London</p>
-                <p class="country"><span>Country: </span>United Kingdom</p>
-                <p class="Population"><span>Population: </span>599</p>
-                <p class="description">In publishing and graphic design, Lorem ipsum is a</p>
-                <button class="description-detail-button mt-4">Explore</button>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 col-12 col-lg-4">
-            <div class="desination-box">
-              <div class="img-box">
-                <img src="../../../assets/images/listimg3.jpg" alt="">
-              </div>
-              <div class="destination-details">
-                <p class="destination-name">Tower of London</p>
-                <p class="country"><span>Country: </span>United Kingdom</p>
-                <p class="Population"><span>Population: </span>599</p>
-                <p class="description">In publishing and graphic design, Lorem ipsum is a</p>
-                <button class="description-detail-button mt-4">Explore</button>
-              </div>
-            </div>
+          <div class="col-md-4 col-12 col-lg-4"
+            *ngFor="let destination of destinations.slice(3, 6); let i = index;">
+            <app-destination [destination]="destination"></app-destination>
           </div>
 
         </div>

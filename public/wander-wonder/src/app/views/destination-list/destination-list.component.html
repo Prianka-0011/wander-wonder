@@ -1,25 +1,13 @@
-<div class="catelog-detail">
-  <div class="catelog-detail-overlay">
-    <div class="container">
-      <div class="famous-detail-head mt-10">
-        <h1>World's best Destination</h1>
-      </div>
-      <div class="images-list-div">
-        <div class="row">
-          <div *ngFor="let destination of destinations" class="col-md-4 col-12 col-lg-4 ">
-            <div  class="desination-box">
-              <div class="img-box">
-                <img src="../../../assets/images/list4.jpg" alt="">
-              </div>
-              <div class="destination-details">
-                <p class="destination-name"><span>Name : </span>{{destination.name}}</p>
-                <p class="country"><span>country : </span>{{destination.country.name}}</p>
-                <p class="Population"><span>Population : </span>{{destination.country.population}}</p>
-                <button class="description-detail-button mt-4" (click)="detailView(destination._id)">details</button>
-              </div>
-            </div>
-          </div>
-        </div>
+<div class="container">
+  
+  <div class="page-title mb-4">
+    <p>World's best Destinations</p>
+  </div>
+
+  <div class="images-list-div">
+    <div class="row">
+      <div *ngFor="let destination of destinations" class="col-md-4 col-12 col-lg-4 ">
+        <app-destination [destination]="destination"></app-destination>
       </div>
     </div>
   </div>

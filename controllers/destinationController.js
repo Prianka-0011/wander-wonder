@@ -11,7 +11,7 @@ let response = {
 
 const getAll = function(req,res) {
     let query = {};
-    console.log(req.query);
+    // console.log(req.query);
     let offset = 0;
     let count = 5;
    
@@ -70,7 +70,7 @@ const getAll = function(req,res) {
 }
 const getCount = function(req, res) {
     const _setResponse = function(count) {
-        console.log("destination from response :",isValidDestination)
+        // console.log("destination from response :",isValidDestination)
         status =process.env.RESPONSE_STATUS_OK;
         response.message = `Total ${count}`;
         response.data = count
@@ -91,9 +91,8 @@ const getCount = function(req, res) {
     })
 }
 const countryWiseGetAll = function(req,res) {
-    console.log("Country wisedesitana")
+    // console.log("Country wisedesitana")
     let query = {};
-    console.log(req.query);
     let offset = 0;
     let count = 5;
    
@@ -106,6 +105,7 @@ const countryWiseGetAll = function(req,res) {
     if (req.query.search) {
         query = { "country.name": { $regex: new RegExp(req.query.search, "i") } };
     }
+    console.log(query);
     
     offset = parseInt(req.query.offset);
     count = parseInt(req.query.count);
@@ -129,7 +129,7 @@ const countryWiseGetAll = function(req,res) {
     }
     
     const _setResponse = function(isValidDestination) {
-        console.log("destination from response :",isValidDestination)
+        // console.log("destination from response :",isValidDestination)
         status = isValidDestination.status;
         response.message = isValidDestination.message;
         response.data = isValidDestination.data
@@ -206,7 +206,7 @@ const getOne=function(req ,res){
         response.data = null
     }
     const destinationId=req.params.destinationId;
-    console.log(destinationId);
+    // console.log(destinationId);
     DestinationModel.findById(destinationId)
     .exec()
     .then((destination) => _foundDestination(destination))

@@ -1,0 +1,13 @@
+<div class="desination mb-4">
+  <div class="destination-image">
+    <img src="../../../../assets/images/{{ destination.photo }}" alt="">
+  </div>
+  <div class="destination-details">
+    <p class="destination-name">{{ destination.name }}</p>
+    <p class="destination-country"><span>Country: </span>{{ destination.country.name }}</p>
+    <p class="destination-population"><span>Population: </span>{{ destination.country.population }}</p>
+    <p class="destination-description mt-2">{{ destination.description.slice(0, 30) }}...</p>
+    <button class="description-button mt-4"
+      routerLink="/destinations/{{destination._id}}">Explore</button>
+  </div>
+</div>

@@ -1,35 +1,21 @@
-.destination-details {
-  font-family: Arial, sans-serif;
-  color: #333;
-}
-
-h2 {
-  margin-bottom: 10px;
-}
-
-.destination-info {
-  display: flex;
-}
-
-.image-container {
-  flex: 1;
-  margin-right: 20px;
-}
-
-img {
+.destination-details table {
   width: 100%;
-  height: auto;
+  max-width: 60rem;
 }
 
-.details-container {
-  flex: 2;
+.destination-details table td {
+  vertical-align: top;
 }
 
-.details-container p {
-  margin-bottom: 10px;
+.destination-details table ul {
+  margin: 0;
+  padding: 0;
 }
 
-ul {
-  margin-top: 0;
-  padding-left: 20px;
+.destination-details img {
+  width: 100%;
+}
+
+.description-title {
+  font-size: 2.00rem;
 }

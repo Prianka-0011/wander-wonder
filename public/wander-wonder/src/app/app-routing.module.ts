@@ -10,7 +10,6 @@ import { DestinatinationDetailComponent } from './views/destinatination-detail/d
 import { AdminDestinationDetainComponent } from './views/admin-destination-detain/admin-destination-detain.component';
 import { AdminDashboardComponent } from './views/admin-dashboard/admin-dashboard.component';
 
-
 const routes: Routes = [
   {
     path:"",
