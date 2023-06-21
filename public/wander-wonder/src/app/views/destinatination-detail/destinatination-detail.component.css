@@ -19,3 +19,7 @@
 .description-title {
   font-size: 2.00rem;
 }
+
+.add-to-fav {
+  cursor: pointer;
+}

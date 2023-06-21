@@ -20,7 +20,7 @@ export class LoginComponent {
         next:(response) => {
           console.log(response.data);
           if(response.data) {
-            localStorage.setItem("token", response.data);
+            localStorage.setItem("token", JSON.stringify(response.data));
             localStorage.setItem("isLoggedIn", "true");
             this._router.navigate(["destinations"]);
             console.log("login success")

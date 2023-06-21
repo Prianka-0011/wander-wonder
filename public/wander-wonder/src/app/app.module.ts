@@ -21,6 +21,7 @@ import { SideBarComponent } from './views/side-bar/side-bar.component';
 import { DestinationComponent } from './shared/components/destination/destination.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { AuthInterceptorInterceptor } from 'healper/auth-interceptor.interceptor';
+import { FavoritesComponent } from './views/favorites/favorites.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { AuthInterceptorInterceptor } from 'healper/auth-interceptor.interceptor
     SideBarComponent,
     DestinationComponent,
     FooterComponent,
+    FavoritesComponent,
   ],
   imports: [
     BrowserModule,

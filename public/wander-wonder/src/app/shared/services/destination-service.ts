@@ -37,4 +37,12 @@ export class DestinationService {
   delete(destination: Destination):Observable<OneDestination> {
     return this.http.delete<OneDestination>(`${this.baseUrl}destinations/${destination._id}`)
   }
+
+  addToFav(payload: { destinationId: string, userId: string }): Observable <OneDestination> {
+    return this.http.post<OneDestination>(`${this.baseUrl}favorites`, payload)
+  }
+
+  getFavorites(userId: string):Observable <DestinationList> {
+    return this.http.get<DestinationList>(`${this.baseUrl}favorites/${userId}`);
+  }
 }

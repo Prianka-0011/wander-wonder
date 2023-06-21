@@ -28,11 +28,16 @@ module.exports = {
 //     .put(tokenValidation.getTokenVerification, destinationController.fullUpdateDestination)
 //     .patch(tokenValidation.getTokenVerification, destinationController.partialUpdateDestination);
 
-// router.route("/login")
-// .post(authanticationController.login)
+router.route("/login")
+    .post(authanticationController.login)
 
-// router.route("/register")
-// .post(authanticationController.register)
+router.route("/register")
+    .post(authanticationController.register)
 
+router.route("/favorites")
+    .post(authanticationController.addToFavorite);
+
+router.route("/favorites/:userId")
+    .get(authanticationController.getFavorites);
 
 // module.exports = router;

@@ -32,4 +32,24 @@ export class DestinatinationDetailComponent implements OnInit{
       }
     })
   }
+
+  addToFavorite() {
+    const payload = {
+      userId: "",
+      destinationId: this.destination._id
+    }
+    const authData = localStorage.getItem("token");
+    if (authData) {
+      payload.userId = JSON.parse(authData).userId;
+    }
+    this.destinationService.addToFav(payload).subscribe({
+      next: (destination) => {
+        console.log(destination);
+      },
+      error: (error) => {
+
+      }
+
+    })
+  }
 }
