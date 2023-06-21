@@ -10,7 +10,9 @@ router.route("/register")
   .post(authanticationController.register)
 
 router.route("/favorites")
-  .get(userController.getFavorites)
-  .post(userController.addToFavorite);
+  .post(authanticationController.addToFavorite);
+
+router.route("/favorites/:userId")
+  .get(authanticationController.getFavorites);
 
 module.exports = router;
