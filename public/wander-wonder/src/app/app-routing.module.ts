@@ -9,6 +9,7 @@ import { AdminDestinationListComponent } from './views/admin-panel/admin-destina
 import { DestinatinationDetailComponent } from './views/destinatination-detail/destinatination-detail.component';
 import { AdminDestinationDetailComponent } from './views/admin-panel/admin-destination-detail/admin-destination-detail.component';
 import { AdminDashboardComponent } from './views/admin-panel/admin-dashboard/admin-dashboard.component';
+import { FavoritesComponent } from './views/favorites/favorites.component';
 
 const routes: Routes = [
   {
@@ -34,6 +35,10 @@ const routes: Routes = [
   {
     path:"register",
     component: RegisterComponent
+  },
+  {
+    path:"favorites",
+    component: FavoritesComponent
   },
   {
     path: 'admin', component: AdminDashboardComponent, children: [

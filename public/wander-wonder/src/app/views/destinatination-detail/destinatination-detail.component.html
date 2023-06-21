@@ -1,6 +1,4 @@
 <div class="destination-details container row">
-  
-
   <div class="destination-content col-md-12">
     <div class="row">
       
@@ -10,9 +8,9 @@
 
       <div class="col-md-6">
         
-        <p class="col-md-12 description-title">
-          {{ destination.name }}
-        </p>
+        <div class="col-md-12 description-title d-flex mb-4">
+          {{ destination.name }} <p class="ms-3 add-to-fav" (click)="addToFavorite()"><span style="color: red">♥</span> Add to Favorites</p>
+        </div>
         
         <table class="table">
           <tbody>
@@ -50,7 +48,5 @@
       </div>
 
     </div>
-
   </div>
-
 </div>

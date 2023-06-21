@@ -49,7 +49,10 @@ const login = function(req, res) {
                 resolve({
                   status: process.env.RESPONSE_STATUS_OK,
                   message: "Login successfully!",
-                  data: token,
+                  data: { 
+                    userId: user._id,
+                    token: token,
+                  },
                 });
               })
               .catch((error) => {
@@ -171,7 +174,62 @@ const register = function(req, res) {
    
 }
 
+const addToFavorite = function(req, res) {
+  const userId = req.body.userId;
+  const destinationId = req.body.destinationId;
+  const response = {
+    status: 200,
+    message: "",
+    data: null
+  }
+  User.findByIdAndUpdate(
+    userId,
+    { $push: { favoriteDestinations: destinationId } },
+    { new: true }
+  )
+  .then(updatedUser => {
+    response.status = process.env.RESPONSE_STATUS_OK;
+    response.message = "Destination added to favorites!";
+    response.data = updatedUser.favoriteDestinations;
+  })
+  .catch(error => {
+    response.status = process.env.RESPONSE_STATUS_INTERNAL_SERVER;
+    response.message = error;
+    response.data = null;
+  })
+  .finally(() => {
+    res.status(response.status).json(response);
+  });
+}
+
+const getFavorites = function(req, res) {
+  const userId = req.params.userId;
+  const response = {
+    status: 200,
+    message: "",
+    data: null
+  }
+  User.findById(userId)
+    .populate("favoriteDestinations")
+    .exec()
+    .then(user => {
+      response.status = process.env.RESPONSE_STATUS_OK;
+      response.message = "Favorites found!";
+      response.data = user;
+    })
+    .catch(error => {
+      response.status = process.env.RESPONSE_STATUS_INTERNAL_SERVER;
+      response.message = error;
+      response.data = null;
+    })
+    .finally(() => {
+      res.status(response.status).json(response);
+    });
+}
+
 module.exports =  {
     login,
-    register
+    register,
+    addToFavorite,
+    getFavorites
 }

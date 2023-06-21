@@ -30,6 +30,9 @@
       <button *ngIf="!isLoginStatus" routerLink="register">
         Register
       </button>
+      <button *ngIf="isLoginStatus" routerLink="favorites">
+        Favorites
+      </button>
       <button *ngIf="isLoginStatus" (click) = "logOut()">
         Log Out
       </button>
