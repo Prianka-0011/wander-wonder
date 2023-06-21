@@ -10,13 +10,13 @@ import { DestinationService } from 'src/app/shared/services/destination-service'
   styleUrls: ['./admin-destination-detail.component.css']
 })
 export class AdminDestinationDetailComponent implements OnInit {
-  
+
   editForm!: FormGroup;
   destination!: Destination;
   isUpdating = false;
 
   constructor(private formBuilder: FormBuilder, private destinationService: DestinationService, private activatedRoute: ActivatedRoute, private router: Router) { }
-  
+
   ngOnInit() {
 
     let destinationId = this.activatedRoute.snapshot.params["destinationId"];
@@ -51,22 +51,22 @@ export class AdminDestinationDetailComponent implements OnInit {
   get airports(): FormArray {
     return this.editForm.get('airports') as FormArray;
   }
-  
+
   addAirport() {
     const airports = this.editForm.get('airports') as FormArray;
     airports.push(this.createAirportGroup());
   }
-  
+
   removeAirport(index: number) {
     const airports = this.editForm.get('airports') as FormArray;
     airports.removeAt(index);
   }
-  
+
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
     console.log(file)
     this.editForm.patchValue({ photo: file });
-    event.target.value = '';
+
   }
 
   getDestinationDetail(destinationId: string) {
@@ -83,7 +83,7 @@ export class AdminDestinationDetailComponent implements OnInit {
             population: destination.data.country.population
           }
         });
-  
+
         const airports = this.editForm.get('airports') as FormArray;
         while (airports.length !== 0) {
           airports.removeAt(0);
@@ -101,21 +101,22 @@ export class AdminDestinationDetailComponent implements OnInit {
         console.log(error);
       }
     });
-  }  
-  
+  }
+
   onSubmit() {
     this.destination = new Destination();
-    if (this.editForm.valid) {      
+    if (this.editForm.valid) {
       const updatedDestination = this.editForm.value;
       console.log(updatedDestination);
       this.destination = updatedDestination;
+      console.log("this.destination.photo;",this.destination.photo)
       if (this.isUpdating) {
         this.destinationService.update(this.destination).subscribe({
           next:(destination) => {
             console.log(destination);
           },
           error: (error) => {
-            console.log(error);            
+            console.log(error);
           },
           complete: () => {
             alert("Destination has been updated!")
@@ -128,7 +129,7 @@ export class AdminDestinationDetailComponent implements OnInit {
             console.log(destination);
           },
           error: (error) => {
-            console.log(error);            
+            console.log(error);
           },
           complete: () => {
             alert("Destination has been added!")
@@ -138,7 +139,7 @@ export class AdminDestinationDetailComponent implements OnInit {
       }
     }
   }
-  
+
   deleteDestination(event: any) {
     event.preventDefault();
     const destination = this.editForm.value;
@@ -147,7 +148,7 @@ export class AdminDestinationDetailComponent implements OnInit {
         console.log(destination);
       },
       error: (error) => {
-        console.log(error);            
+        console.log(error);
       },
       complete: () => {
         alert("Destination has been deleted!")

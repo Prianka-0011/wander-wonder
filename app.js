@@ -3,7 +3,9 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 app.use(express.json())
-const route =require("./router/index");
+const route =require("./router");
+
+
 
 require("dotenv").config();
 app.use(express.json());
@@ -17,9 +19,9 @@ app.use("/api", function(req, res, next) {
 });
 
 // Routes
-app.use("/api", route);
-// app.use("/api", route.destinationRoutes); // Use the destination routes
-// app.use("/api", route.userRoutes); // Use the user routes
+// app.use("/api", route);
+app.use("/api", route.destinationRoutes);
+app.use("/api", route.userRoutes); 
 
 const server = app.listen(process.env.PORT, "localhost", function() {
   console.log("Server is running: " + server.address().port);

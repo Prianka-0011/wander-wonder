@@ -30,7 +30,6 @@ export class DestinatinationDetailComponent implements OnInit{
       error:(error) => {
 
       }
-
     })
   }
 }

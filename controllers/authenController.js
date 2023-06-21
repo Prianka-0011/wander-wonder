@@ -26,4 +26,6 @@ const getTokenVerification = function(req, res, next) {
 
 module.exports = {
   getTokenVerification
+  
 };
+
